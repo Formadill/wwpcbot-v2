@@ -25,8 +25,8 @@ namespace wwpcbot_v2
             string data = _data.Substring(_data.IndexOf(":") + 1);
             if (data.StartsWith("!"))
             {
-                if (data.StartsWith("!test"))
-                    IRCconnect.sendPrivMsg("test");
+                if(CustomCmdBool == true)
+                    CustomCommands.cmdReply(data);
             }
         }
     }

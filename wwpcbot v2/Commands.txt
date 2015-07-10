@@ -1,0 +1,2 @@
+﻿!testcustomcommands=Test
+!test2=Test2

@@ -20,12 +20,16 @@ namespace wwpcbot_v2
         private void buttonApply_Click(object sender, EventArgs e)
         {
             Functionality.CmdBool = checkBoxCmds.Checked;
+            Functionality.CustomCmdBool = checkBoxCustomCmds.Checked;
             this.Close();
         }
 
         private void checkBoxCmds_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (checkBoxCmds.Checked)
+            {
+                checkBoxCustomCmds.Visible = true;
+            }
         }
     }
 }

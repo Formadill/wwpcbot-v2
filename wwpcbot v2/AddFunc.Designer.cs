@@ -31,7 +31,7 @@
             this.labelCmds = new System.Windows.Forms.Label();
             this.checkBoxCmds = new System.Windows.Forms.CheckBox();
             this.buttonApply = new System.Windows.Forms.Button();
-            this.labelCustCmds = new System.Windows.Forms.Label();
+            this.checkBoxCustomCmds = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // labelCmds
@@ -63,21 +63,23 @@
             this.buttonApply.UseVisualStyleBackColor = true;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
-            // labelCustCmds
+            // checkBoxCustomCmds
             // 
-            this.labelCustCmds.AutoSize = true;
-            this.labelCustCmds.Location = new System.Drawing.Point(12, 44);
-            this.labelCustCmds.Name = "labelCustCmds";
-            this.labelCustCmds.Size = new System.Drawing.Size(99, 13);
-            this.labelCustCmds.TabIndex = 3;
-            this.labelCustCmds.Text = "Custom commands:";
+            this.checkBoxCustomCmds.AutoSize = true;
+            this.checkBoxCustomCmds.Location = new System.Drawing.Point(145, 28);
+            this.checkBoxCustomCmds.Name = "checkBoxCustomCmds";
+            this.checkBoxCustomCmds.Size = new System.Drawing.Size(115, 17);
+            this.checkBoxCustomCmds.TabIndex = 3;
+            this.checkBoxCustomCmds.Text = "Custom commands";
+            this.checkBoxCustomCmds.UseVisualStyleBackColor = true;
+            this.checkBoxCustomCmds.Visible = false;
             // 
             // AddFunc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.labelCustCmds);
+            this.Controls.Add(this.checkBoxCustomCmds);
             this.Controls.Add(this.buttonApply);
             this.Controls.Add(this.checkBoxCmds);
             this.Controls.Add(this.labelCmds);
@@ -93,6 +95,6 @@
         private System.Windows.Forms.Label labelCmds;
         private System.Windows.Forms.CheckBox checkBoxCmds;
         private System.Windows.Forms.Button buttonApply;
-        private System.Windows.Forms.Label labelCustCmds;
+        private System.Windows.Forms.CheckBox checkBoxCustomCmds;
     }
 }

@@ -55,6 +55,7 @@
     <Compile Include="AddFunc.Designer.cs">
       <DependentUpon>AddFunc.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomCommands.cs" />
     <Compile Include="Functionality.cs" />
     <Compile Include="ConnectForm.cs">
       <SubType>Form</SubType>
@@ -101,6 +102,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Commands.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
