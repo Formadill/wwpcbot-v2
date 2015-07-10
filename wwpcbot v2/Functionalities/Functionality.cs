@@ -11,6 +11,7 @@ namespace wwpcbot_v2
     {
         public static bool CustomCmdBool;
         public static bool CmdBool;
+
         public static void ActivateFunc(MainForm form)
         {
             Task.Factory.StartNew(() => { new AddFunc().ShowDialog(); }).Wait();
@@ -19,14 +20,15 @@ namespace wwpcbot_v2
                 IRCconnect.callCmdChk = true;
             }
         }
+
         public static void CheckCmd(MainForm form)
         {
             string _data = IRCconnect._data.Remove(0,1);
             string data = _data.Substring(_data.IndexOf(":") + 1);
             if (data.StartsWith("!"))
             {
-                if(CustomCmdBool == true)
-                    CustomCommands.cmdReply(data);
+                if (CustomCmdBool == true)
+                    Task.Factory.StartNew(() => CustomCommands.mainControl(data));
             }
         }
     }

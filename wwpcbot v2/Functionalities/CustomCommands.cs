@@ -9,11 +9,24 @@ namespace wwpcbot_v2
 {
     class CustomCommands
     {
+        private static string cmdFilePath = "Functionalities/Commands.txt";
+        public static void mainControl(string commandInput)
+        {
+            if (commandInput.StartsWith("!addcommand "))
+            {
+                cmdAdd(commandInput);
+            }
+            else
+            {
+                cmdReply(commandInput);
+            }
+        }
+
         public static void cmdReply(string commandInput)
         {
             string command;
             string response = null;
-            string cmdFilePath = "Commands.txt";
+            
             command = commandInput;
             if (commandInput.Contains(" "))
                 command = commandInput.Substring(0, commandInput.IndexOf(" "));
@@ -35,6 +48,16 @@ namespace wwpcbot_v2
                 {
                     IRCconnect.sendPrivMsg(response);
                 }
+            }
+        }
+
+        public static void cmdAdd(string commandInput)
+        {
+            string toAdd = commandInput.Substring(commandInput.IndexOf(" ") + 1);
+            using (FileStream fs = new FileStream(cmdFilePath, FileMode.Append, FileAccess.Write))
+            using (StreamWriter writer = new StreamWriter(fs))
+            {
+                writer.WriteLine(toAdd);
             }
         }
     }

@@ -1,2 +1,2 @@
-﻿!testcustomcommands=Test
-!test2=Test2
+﻿!testerino=Le workerino
+!testosterone=MANLY MAN!!
