@@ -30,6 +30,8 @@
         {
             this.listBoxOutput = new System.Windows.Forms.ListBox();
             this.buttonConnect = new System.Windows.Forms.Button();
+            this.textBoxSendPrivMsg = new System.Windows.Forms.TextBox();
+            this.buttonFunc = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxOutput
@@ -54,16 +56,40 @@
             this.buttonConnect.UseVisualStyleBackColor = true;
             this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
             // 
+            // textBoxSendPrivMsg
+            // 
+            this.textBoxSendPrivMsg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSendPrivMsg.Location = new System.Drawing.Point(12, 257);
+            this.textBoxSendPrivMsg.Name = "textBoxSendPrivMsg";
+            this.textBoxSendPrivMsg.Size = new System.Drawing.Size(230, 20);
+            this.textBoxSendPrivMsg.TabIndex = 2;
+            this.textBoxSendPrivMsg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSendPrivMsg_KeyDown);
+            // 
+            // buttonFunc
+            // 
+            this.buttonFunc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonFunc.Location = new System.Drawing.Point(268, 41);
+            this.buttonFunc.Name = "buttonFunc";
+            this.buttonFunc.Size = new System.Drawing.Size(75, 23);
+            this.buttonFunc.TabIndex = 3;
+            this.buttonFunc.Text = "Functionality";
+            this.buttonFunc.UseVisualStyleBackColor = true;
+            this.buttonFunc.Click += new System.EventHandler(this.buttonFunc_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(372, 298);
+            this.Controls.Add(this.buttonFunc);
+            this.Controls.Add(this.textBoxSendPrivMsg);
             this.Controls.Add(this.buttonConnect);
             this.Controls.Add(this.listBoxOutput);
             this.Name = "MainForm";
             this.Text = "wwpcbot";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -71,6 +97,8 @@
 
         private System.Windows.Forms.ListBox listBoxOutput;
         private System.Windows.Forms.Button buttonConnect;
+        private System.Windows.Forms.TextBox textBoxSendPrivMsg;
+        private System.Windows.Forms.Button buttonFunc;
     }
 }
 

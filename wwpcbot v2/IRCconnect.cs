@@ -26,7 +26,19 @@ namespace wwpcbot_v2
         public static IRCconnectInfo MainIRC;
         public static TextReader input;
         public static TextWriter output;
-
+        private static string __data;
+        public static bool callCmdChk = false;
+        public static string _data
+        {
+            get { return __data; }
+            set {
+                __data = value;
+                if (callCmdChk == true)
+                {
+                    Functionality.CheckCmd(MainForm.form);
+                }
+            }
+        }
         public static void connectMain(MainForm form)
         {
             //Task groupConnect = null;
@@ -40,19 +52,24 @@ namespace wwpcbot_v2
                 "NICK " + MainIRC.BotNick + "\r\n"
             );    
         }
-        public static  async Task listener(MainForm form)
+        public static void sendPrivMsg(string msg)
         {
+            sendData("PRIVMSG " + MainIRC.Channel + " :" + msg + "\r\n");
+        }
+        public static async Task listener(MainForm form)
+        {
+            
             try
             {
                 string data;
                 while ((data = await input.ReadLineAsync()) != null)
                 {
+                    _data = data;
                     form.AddToListBox(data);
                     if(data.Split(' ')[1] == "001")
                         sendData("MODE " + IRCconnect.MainIRC.BotNick + " +B\r\n" +
                                  "JOIN " + IRCconnect.MainIRC.Channel + "\r\n");
                     if (data.StartsWith("PING ")) { sendData(data.Replace("PING", "PONG") + "\r\n");}
-                    if (data[0] != ':') continue;
                 }
             }
             catch (ObjectDisposedException)
