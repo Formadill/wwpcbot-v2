@@ -49,18 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddFunc.cs">
+    <Compile Include="Functionalities\AddFunc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddFunc.Designer.cs">
+    <Compile Include="Functionalities\AddFunc.Designer.cs">
       <DependentUpon>AddFunc.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomCommands.cs" />
-    <Compile Include="Functionality.cs" />
-    <Compile Include="ConnectForm.cs">
+    <Compile Include="Functionalities\CustomCommands.cs" />
+    <Compile Include="Functionalities\Functionality.cs" />
+    <Compile Include="IRC\ConnectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConnectForm.Designer.cs">
+    <Compile Include="IRC\ConnectForm.Designer.cs">
       <DependentUpon>ConnectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -69,13 +69,13 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="IRCconnect.cs" />
+    <Compile Include="IRC\IRCconnect.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddFunc.resx">
+    <EmbeddedResource Include="Functionalities\AddFunc.resx">
       <DependentUpon>AddFunc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConnectForm.resx">
+    <EmbeddedResource Include="IRC\ConnectForm.resx">
       <DependentUpon>ConnectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
@@ -104,7 +104,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Commands.txt">
+    <None Include="Functionalities\Commands.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
