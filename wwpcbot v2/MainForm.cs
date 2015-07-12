@@ -27,7 +27,6 @@ namespace wwpcbot_v2
 
         private void buttonConnect_Click(object sender, EventArgs e)
         {
-            //Task.Factory.StartNew(() => IRCconnect.connectMain(this),CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
             IRCconnect.connectMain(this);
             IRCconnect.listener(this);           
         }
