@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using wwpcbot_v2;
 using wwpcbot_v2.Functionalities;
 using wwpcbot_v2.IRC;
+using System.Globalization;
 
 namespace wwpcbot_v2
 {
@@ -46,6 +47,17 @@ namespace wwpcbot_v2
             }
         }
 
+        public void select(int start, int length)
+        {
+            int totalLines = richTextBoxInput.Lines.Length;
+            string lastLine = richTextBoxInput.Lines[totalLines-2];
+            Console.WriteLine(richTextBoxInput.Text.LastIndexOf(lastLine));
+            Console.WriteLine(lastLine.Length);
+            richTextBoxInput.Select(richTextBoxInput.Text.LastIndexOf(lastLine) + start, length);
+            Clipboard.SetText("test");
+            richTextBoxInput.Paste();
+        }
+
         private void textBoxSendPrivMsg_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
@@ -63,6 +75,19 @@ namespace wwpcbot_v2
         private void MainForm_Load(object sender, EventArgs e)
         {
             richTextBoxInput.Enabled = true;
+        }
+
+        public string GetTextFromPos(int start, int end)
+        {
+            string text = null;
+            int totalLines = richTextBoxInput.Lines.Length;
+            string lastLine = richTextBoxInput.Lines[totalLines - 2];
+            lastLine = lastLine.Substring(lastLine.IndexOf(IRCconnect.MainIRC.Channel + " :") + IRCconnect.MainIRC.Channel.Length + 2);
+            Console.WriteLine(start);
+            Console.WriteLine(end);
+            text = lastLine.Substring(0, end).Substring(start);
+            Console.WriteLine(text);
+            return text;
         }
     }
 }

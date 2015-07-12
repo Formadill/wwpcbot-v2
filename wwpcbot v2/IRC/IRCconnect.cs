@@ -39,6 +39,10 @@ namespace wwpcbot_v2.IRC
                 {
                     Functionality.CheckCmd(MainForm.form);
                 }
+                if (Functionality.TagBool)
+                {
+                    Functionality.parseTags();
+                }
             }
         }
         public static void connectMain(MainForm form)
@@ -66,8 +70,8 @@ namespace wwpcbot_v2.IRC
                 string data;
                 while ((data = await input.ReadLineAsync()) != null)
                 {
-                    _data = data;
                     form.AddToListBox(data);
+                    _data = data;
                     if(data.Split(' ')[1] == "001")
                         sendData("CAP REQ :twitch.tv/commands" + "\r\n" +
                                  "MODE " + IRCconnect.MainIRC.BotNick + " +B\r\n" +
