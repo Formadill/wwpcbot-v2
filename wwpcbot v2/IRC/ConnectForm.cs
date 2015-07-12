@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using wwpcbot_v2;
 
-namespace wwpcbot_v2
+namespace wwpcbot_v2.IRC
 {
     public partial class ConnectForm : Form
     {

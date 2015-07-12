@@ -4,10 +4,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using wwpcbot_v2;
+using wwpcbot_v2.Functionalities;
+using wwpcbot_v2.IRC;
 
 namespace wwpcbot_v2
 {
@@ -28,8 +32,18 @@ namespace wwpcbot_v2
         }
         public void AddToListBox(string addString)
         {
-            listBoxOutput.Items.Add(addString);
+            richTextBoxInput.AppendText(addString + Environment.NewLine);
+        }
 
+        public void TextToImg(string text, Image img)
+        {
+            int index;
+            if ((index = richTextBoxInput.Find(text)) > -1)
+            {
+                richTextBoxInput.Select(index, text.Length);
+                Clipboard.SetImage(img);
+                richTextBoxInput.Paste();
+            }
         }
 
         private void textBoxSendPrivMsg_KeyDown(object sender, KeyEventArgs e)
@@ -44,6 +58,11 @@ namespace wwpcbot_v2
         private void buttonFunc_Click(object sender, EventArgs e)
         {
             Functionality.ActivateFunc(this);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            richTextBoxInput.Enabled = true;
         }
     }
 }

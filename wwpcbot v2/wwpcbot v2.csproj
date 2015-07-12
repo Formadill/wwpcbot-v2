@@ -73,6 +73,7 @@
     <Compile Include="IRC\IRCconnect.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TwitchEmotes.cs" />
     <EmbeddedResource Include="Functionalities\AddFunc.resx">
       <DependentUpon>AddFunc.cs</DependentUpon>
     </EmbeddedResource>

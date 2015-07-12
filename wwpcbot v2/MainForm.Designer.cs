@@ -28,22 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBoxOutput = new System.Windows.Forms.ListBox();
             this.buttonConnect = new System.Windows.Forms.Button();
             this.textBoxSendPrivMsg = new System.Windows.Forms.TextBox();
             this.buttonFunc = new System.Windows.Forms.Button();
+            this.richTextBoxInput = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
-            // 
-            // listBoxOutput
-            // 
-            this.listBoxOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBoxOutput.FormattingEnabled = true;
-            this.listBoxOutput.Location = new System.Drawing.Point(12, 12);
-            this.listBoxOutput.Name = "listBoxOutput";
-            this.listBoxOutput.Size = new System.Drawing.Size(350, 264);
-            this.listBoxOutput.TabIndex = 0;
             // 
             // buttonConnect
             // 
@@ -77,17 +66,29 @@
             this.buttonFunc.UseVisualStyleBackColor = true;
             this.buttonFunc.Click += new System.EventHandler(this.buttonFunc_Click);
             // 
+            // richTextBoxInput
+            // 
+            this.richTextBoxInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxInput.Location = new System.Drawing.Point(12, 12);
+            this.richTextBoxInput.Name = "richTextBoxInput";
+            this.richTextBoxInput.Size = new System.Drawing.Size(350, 278);
+            this.richTextBoxInput.TabIndex = 4;
+            this.richTextBoxInput.Text = "";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(492, 337);
+            this.Controls.Add(this.richTextBoxInput);
             this.Controls.Add(this.buttonFunc);
             this.Controls.Add(this.textBoxSendPrivMsg);
             this.Controls.Add(this.buttonConnect);
-            this.Controls.Add(this.listBoxOutput);
             this.Name = "MainForm";
             this.Text = "wwpcbot";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,10 +96,10 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBoxOutput;
         private System.Windows.Forms.Button buttonConnect;
         private System.Windows.Forms.TextBox textBoxSendPrivMsg;
         private System.Windows.Forms.Button buttonFunc;
+        private System.Windows.Forms.RichTextBox richTextBoxInput;
     }
 }
 

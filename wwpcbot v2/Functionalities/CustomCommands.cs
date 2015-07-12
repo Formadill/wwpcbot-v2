@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using wwpcbot_v2;
+using wwpcbot_v2.IRC;
 
-namespace wwpcbot_v2
+namespace wwpcbot_v2.Functionalities
 {
     class CustomCommands
     {

@@ -1,4 +1,4 @@
-﻿namespace wwpcbot_v2
+﻿namespace wwpcbot_v2.Functionalities
 {
     partial class AddFunc
     {

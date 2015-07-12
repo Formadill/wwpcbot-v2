@@ -7,8 +7,10 @@ using System.Windows.Forms;
 using System.Net.Sockets;
 using System.IO;
 using System.Threading;
+using wwpcbot_v2.Functionalities;
+using wwpcbot_v2;
 
-namespace wwpcbot_v2
+namespace wwpcbot_v2.IRC
 {
     public struct IRCconnectInfo
     {
@@ -83,6 +85,7 @@ namespace wwpcbot_v2
         {
             output.WriteAsync(data);
             output.FlushAsync();
+            MainForm.form.AddToListBox(data.Replace(Environment.NewLine, ""));
         }
 
         public static void connectGroup()
