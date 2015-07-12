@@ -33,7 +33,7 @@ namespace wwpcbot_v2
             ReplaceEmote(texts, ids);
         }
 
-        public static void ReplaceEmote(List<string> texts, List<int> id)
+        private static void ReplaceEmote(List<string> texts, List<int> id)
         {
             int i = 0;
             foreach (string text in texts)
