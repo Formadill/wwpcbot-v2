@@ -30,6 +30,7 @@ namespace wwpcbot_v2.IRC
         public static TextWriter output;
         private static string __data;
         public static bool callCmdChk = false;
+        
         public static string _data
         {
             get { return __data; }

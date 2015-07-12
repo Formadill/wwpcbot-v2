@@ -16,7 +16,15 @@ namespace wwpcbot_v2.Functionalities
         {
             if (commandInput.StartsWith("!addcommand "))
             {
-                cmdAdd(commandInput);
+                if (Functionality.TagBool)
+                {
+                    if (Functionality.info.user_type == "mod" || Functionality.Sender == IRCconnect.MainIRC.Channel.Remove(0, 1))
+                    {
+                        cmdAdd(commandInput);
+                    }
+                }
+                else
+                    cmdAdd(commandInput);
             }
             else
             {
@@ -61,6 +69,7 @@ namespace wwpcbot_v2.Functionalities
             {
                 writer.WriteLine(toAdd);
             }
+            IRCconnect.sendPrivMsg("Command added succesfully");
         }
     }
 }

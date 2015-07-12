@@ -17,6 +17,7 @@ namespace wwpcbot_v2.Functionalities
         public static bool CapBool;
         public static bool MemBool;
         public static bool TagBool;
+        public static string Sender;
         public static tagInfo info;
 
         public static void ActivateFunc(MainForm form)
@@ -39,6 +40,7 @@ namespace wwpcbot_v2.Functionalities
             string data = _data.Substring(_data.IndexOf(":") + 1);
             if (data.StartsWith("!"))
             {
+                Sender = data.Substring(0, data.IndexOf('!'));
                 if (CustomCmdBool == true)
                     Task.Factory.StartNew(() => CustomCommands.mainControl(data));
             }
