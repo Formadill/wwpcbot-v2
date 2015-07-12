@@ -47,17 +47,6 @@ namespace wwpcbot_v2
             }
         }
 
-        public void select(int start, int length)
-        {
-            int totalLines = richTextBoxInput.Lines.Length;
-            string lastLine = richTextBoxInput.Lines[totalLines-2];
-            Console.WriteLine(richTextBoxInput.Text.LastIndexOf(lastLine));
-            Console.WriteLine(lastLine.Length);
-            richTextBoxInput.Select(richTextBoxInput.Text.LastIndexOf(lastLine) + start, length);
-            Clipboard.SetText("test");
-            richTextBoxInput.Paste();
-        }
-
         private void textBoxSendPrivMsg_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
