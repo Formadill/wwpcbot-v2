@@ -32,6 +32,10 @@
             this.checkBoxCmds = new System.Windows.Forms.CheckBox();
             this.buttonApply = new System.Windows.Forms.Button();
             this.checkBoxCustomCmds = new System.Windows.Forms.CheckBox();
+            this.labelTwitchCap = new System.Windows.Forms.Label();
+            this.checkBoxTwitchCap = new System.Windows.Forms.CheckBox();
+            this.checkBoxMember = new System.Windows.Forms.CheckBox();
+            this.checkBoxTags = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // labelCmds
@@ -74,11 +78,56 @@
             this.checkBoxCustomCmds.UseVisualStyleBackColor = true;
             this.checkBoxCustomCmds.Visible = false;
             // 
+            // labelTwitchCap
+            // 
+            this.labelTwitchCap.AutoSize = true;
+            this.labelTwitchCap.Location = new System.Drawing.Point(12, 114);
+            this.labelTwitchCap.Name = "labelTwitchCap";
+            this.labelTwitchCap.Size = new System.Drawing.Size(97, 13);
+            this.labelTwitchCap.TabIndex = 4;
+            this.labelTwitchCap.Text = "Twitch capabilities:";
+            // 
+            // checkBoxTwitchCap
+            // 
+            this.checkBoxTwitchCap.AutoSize = true;
+            this.checkBoxTwitchCap.Location = new System.Drawing.Point(145, 113);
+            this.checkBoxTwitchCap.Name = "checkBoxTwitchCap";
+            this.checkBoxTwitchCap.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxTwitchCap.TabIndex = 5;
+            this.checkBoxTwitchCap.UseVisualStyleBackColor = true;
+            this.checkBoxTwitchCap.CheckedChanged += new System.EventHandler(this.checkBoxTwitchCap_CheckedChanged);
+            // 
+            // checkBoxMember
+            // 
+            this.checkBoxMember.AutoSize = true;
+            this.checkBoxMember.Location = new System.Drawing.Point(145, 133);
+            this.checkBoxMember.Name = "checkBoxMember";
+            this.checkBoxMember.Size = new System.Drawing.Size(83, 17);
+            this.checkBoxMember.TabIndex = 6;
+            this.checkBoxMember.Text = "Membership";
+            this.checkBoxMember.UseVisualStyleBackColor = true;
+            this.checkBoxMember.Visible = false;
+            // 
+            // checkBoxTags
+            // 
+            this.checkBoxTags.AutoSize = true;
+            this.checkBoxTags.Location = new System.Drawing.Point(145, 156);
+            this.checkBoxTags.Name = "checkBoxTags";
+            this.checkBoxTags.Size = new System.Drawing.Size(50, 17);
+            this.checkBoxTags.TabIndex = 7;
+            this.checkBoxTags.Text = "Tags";
+            this.checkBoxTags.UseVisualStyleBackColor = true;
+            this.checkBoxTags.Visible = false;
+            // 
             // AddFunc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.checkBoxTags);
+            this.Controls.Add(this.checkBoxMember);
+            this.Controls.Add(this.checkBoxTwitchCap);
+            this.Controls.Add(this.labelTwitchCap);
             this.Controls.Add(this.checkBoxCustomCmds);
             this.Controls.Add(this.buttonApply);
             this.Controls.Add(this.checkBoxCmds);
@@ -96,5 +145,9 @@
         private System.Windows.Forms.CheckBox checkBoxCmds;
         private System.Windows.Forms.Button buttonApply;
         private System.Windows.Forms.CheckBox checkBoxCustomCmds;
+        private System.Windows.Forms.Label labelTwitchCap;
+        private System.Windows.Forms.CheckBox checkBoxTwitchCap;
+        private System.Windows.Forms.CheckBox checkBoxMember;
+        private System.Windows.Forms.CheckBox checkBoxTags;
     }
 }

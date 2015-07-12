@@ -21,6 +21,9 @@ namespace wwpcbot_v2
         {
             Functionality.CmdBool = checkBoxCmds.Checked;
             Functionality.CustomCmdBool = checkBoxCustomCmds.Checked;
+            Functionality.CapBool = checkBoxTwitchCap.Checked;
+            Functionality.MemBool = checkBoxMember.Checked;
+            Functionality.TagBool = checkBoxTags.Checked;
             this.Close();
         }
 
@@ -29,6 +32,15 @@ namespace wwpcbot_v2
             if (checkBoxCmds.Checked)
             {
                 checkBoxCustomCmds.Visible = true;
+            }
+        }
+
+        private void checkBoxTwitchCap_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxTwitchCap.Checked)
+            {
+                checkBoxMember.Visible = true;
+                checkBoxTags.Visible = true;
             }
         }
     }

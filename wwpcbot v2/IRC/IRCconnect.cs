@@ -67,7 +67,8 @@ namespace wwpcbot_v2
                     _data = data;
                     form.AddToListBox(data);
                     if(data.Split(' ')[1] == "001")
-                        sendData("MODE " + IRCconnect.MainIRC.BotNick + " +B\r\n" +
+                        sendData("CAP REQ :twitch.tv/commands" + "\r\n" +
+                                 "MODE " + IRCconnect.MainIRC.BotNick + " +B\r\n" +
                                  "JOIN " + IRCconnect.MainIRC.Channel + "\r\n");
                     if (data.StartsWith("PING ")) { sendData(data.Replace("PING", "PONG") + "\r\n");}
                 }

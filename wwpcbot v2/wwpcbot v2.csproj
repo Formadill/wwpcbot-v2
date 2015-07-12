@@ -57,6 +57,7 @@
     </Compile>
     <Compile Include="Functionalities\CustomCommands.cs" />
     <Compile Include="Functionalities\Functionality.cs" />
+    <Compile Include="Functionalities\TwitchCap.cs" />
     <Compile Include="IRC\ConnectForm.cs">
       <SubType>Form</SubType>
     </Compile>

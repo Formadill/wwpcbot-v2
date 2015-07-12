@@ -42,13 +42,13 @@
             this.listBoxOutput.FormattingEnabled = true;
             this.listBoxOutput.Location = new System.Drawing.Point(12, 12);
             this.listBoxOutput.Name = "listBoxOutput";
-            this.listBoxOutput.Size = new System.Drawing.Size(230, 225);
+            this.listBoxOutput.Size = new System.Drawing.Size(350, 264);
             this.listBoxOutput.TabIndex = 0;
             // 
             // buttonConnect
             // 
             this.buttonConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonConnect.Location = new System.Drawing.Point(268, 12);
+            this.buttonConnect.Location = new System.Drawing.Point(388, 12);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(75, 23);
             this.buttonConnect.TabIndex = 1;
@@ -60,16 +60,16 @@
             // 
             this.textBoxSendPrivMsg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSendPrivMsg.Location = new System.Drawing.Point(12, 257);
+            this.textBoxSendPrivMsg.Location = new System.Drawing.Point(12, 296);
             this.textBoxSendPrivMsg.Name = "textBoxSendPrivMsg";
-            this.textBoxSendPrivMsg.Size = new System.Drawing.Size(230, 20);
+            this.textBoxSendPrivMsg.Size = new System.Drawing.Size(350, 20);
             this.textBoxSendPrivMsg.TabIndex = 2;
             this.textBoxSendPrivMsg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSendPrivMsg_KeyDown);
             // 
             // buttonFunc
             // 
             this.buttonFunc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonFunc.Location = new System.Drawing.Point(268, 41);
+            this.buttonFunc.Location = new System.Drawing.Point(388, 41);
             this.buttonFunc.Name = "buttonFunc";
             this.buttonFunc.Size = new System.Drawing.Size(75, 23);
             this.buttonFunc.TabIndex = 3;
@@ -81,7 +81,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(372, 298);
+            this.ClientSize = new System.Drawing.Size(492, 337);
             this.Controls.Add(this.buttonFunc);
             this.Controls.Add(this.textBoxSendPrivMsg);
             this.Controls.Add(this.buttonConnect);

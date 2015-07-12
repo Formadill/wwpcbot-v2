@@ -11,6 +11,9 @@ namespace wwpcbot_v2
     {
         public static bool CustomCmdBool;
         public static bool CmdBool;
+        public static bool CapBool;
+        public static bool MemBool;
+        public static bool TagBool;
 
         public static void ActivateFunc(MainForm form)
         {
@@ -18,6 +21,10 @@ namespace wwpcbot_v2
             if(CmdBool == true)
             {
                 IRCconnect.callCmdChk = true;
+            }
+            if(CapBool == true)
+            {
+                TwitchCap.mainControl(MemBool, TagBool);
             }
         }
 
