@@ -28,37 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonConnect = new System.Windows.Forms.Button();
             this.textBoxSendPrivMsg = new System.Windows.Forms.TextBox();
             this.buttonFunc = new System.Windows.Forms.Button();
             this.richTextBoxInput = new System.Windows.Forms.RichTextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemConnect = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemBot = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemTwitch = new System.Windows.Forms.ToolStripMenuItem();
+            this.twitchTagsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // buttonConnect
-            // 
-            this.buttonConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonConnect.Location = new System.Drawing.Point(388, 12);
-            this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(75, 23);
-            this.buttonConnect.TabIndex = 1;
-            this.buttonConnect.Text = "Connect";
-            this.buttonConnect.UseVisualStyleBackColor = true;
-            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
             // 
             // textBoxSendPrivMsg
             // 
             this.textBoxSendPrivMsg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSendPrivMsg.Location = new System.Drawing.Point(12, 296);
+            this.textBoxSendPrivMsg.Location = new System.Drawing.Point(12, 429);
             this.textBoxSendPrivMsg.Name = "textBoxSendPrivMsg";
-            this.textBoxSendPrivMsg.Size = new System.Drawing.Size(350, 20);
+            this.textBoxSendPrivMsg.Size = new System.Drawing.Size(508, 20);
             this.textBoxSendPrivMsg.TabIndex = 2;
             this.textBoxSendPrivMsg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSendPrivMsg_KeyDown);
             // 
             // buttonFunc
             // 
             this.buttonFunc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonFunc.Location = new System.Drawing.Point(388, 41);
+            this.buttonFunc.Location = new System.Drawing.Point(526, 33);
             this.buttonFunc.Name = "buttonFunc";
             this.buttonFunc.Size = new System.Drawing.Size(75, 23);
             this.buttonFunc.TabIndex = 3;
@@ -71,24 +66,75 @@
             this.richTextBoxInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxInput.Location = new System.Drawing.Point(12, 12);
+            this.richTextBoxInput.Font = new System.Drawing.Font("Arial Unicode MS", 9F);
+            this.richTextBoxInput.Location = new System.Drawing.Point(12, 33);
             this.richTextBoxInput.Name = "richTextBoxInput";
-            this.richTextBoxInput.Size = new System.Drawing.Size(350, 278);
+            this.richTextBoxInput.Size = new System.Drawing.Size(508, 393);
             this.richTextBoxInput.TabIndex = 4;
             this.richTextBoxInput.Text = "";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.optionsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(613, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemConnect,
+            this.ToolStripMenuItemBot,
+            this.ToolStripMenuItemTwitch,
+            this.twitchTagsToolStripMenuItem});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.optionsToolStripMenuItem.Text = "Options";
+            // 
+            // ToolStripMenuItemConnect
+            // 
+            this.ToolStripMenuItemConnect.Name = "ToolStripMenuItemConnect";
+            this.ToolStripMenuItemConnect.Size = new System.Drawing.Size(171, 22);
+            this.ToolStripMenuItemConnect.Text = "Connect";
+            this.ToolStripMenuItemConnect.Click += new System.EventHandler(this.ToolStripMenuItemConnect_Click);
+            // 
+            // ToolStripMenuItemBot
+            // 
+            this.ToolStripMenuItemBot.Name = "ToolStripMenuItemBot";
+            this.ToolStripMenuItemBot.Size = new System.Drawing.Size(171, 22);
+            this.ToolStripMenuItemBot.Text = "Bot functionality";
+            // 
+            // ToolStripMenuItemTwitch
+            // 
+            this.ToolStripMenuItemTwitch.Name = "ToolStripMenuItemTwitch";
+            this.ToolStripMenuItemTwitch.Size = new System.Drawing.Size(171, 22);
+            this.ToolStripMenuItemTwitch.Text = "Twitch integration";
+            // 
+            // twitchTagsToolStripMenuItem
+            // 
+            this.twitchTagsToolStripMenuItem.Name = "twitchTagsToolStripMenuItem";
+            this.twitchTagsToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.twitchTagsToolStripMenuItem.Text = "Twitch Tags";
+            this.twitchTagsToolStripMenuItem.Click += new System.EventHandler(this.twitchTagsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 337);
+            this.ClientSize = new System.Drawing.Size(613, 470);
             this.Controls.Add(this.richTextBoxInput);
             this.Controls.Add(this.buttonFunc);
             this.Controls.Add(this.textBoxSendPrivMsg);
-            this.Controls.Add(this.buttonConnect);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "wwpcbot";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,10 +142,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonConnect;
         private System.Windows.Forms.TextBox textBoxSendPrivMsg;
         private System.Windows.Forms.Button buttonFunc;
         private System.Windows.Forms.RichTextBox richTextBoxInput;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemConnect;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemBot;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemTwitch;
+        private System.Windows.Forms.ToolStripMenuItem twitchTagsToolStripMenuItem;
     }
 }
 

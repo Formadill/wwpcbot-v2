@@ -23,12 +23,16 @@ namespace wwpcbot_v2
             int i = 0;
             foreach (string emote in emotes)
             {
-                int id = Convert.ToInt32(emote.Split(':')[0]);
-                Console.WriteLine(id);
-                ids.Add(id);
-                string[] placevalues = emote.Split(':')[1].Split('-');
-                texts.Add(MainForm.form.GetTextFromPos(Convert.ToInt32(placevalues[0]), Convert.ToInt32(placevalues[1]) + 1));
-                i++;
+                try
+                {
+                    int id = Convert.ToInt32(emote.Split(':')[0]);
+                    Console.WriteLine(id);
+                    ids.Add(id);
+                    string[] placevalues = emote.Split(':')[1].Split('-');
+                    texts.Add(MainForm.form.GetTextFromPos(Convert.ToInt32(placevalues[0]), Convert.ToInt32(placevalues[1])));
+                    i++;
+                }
+                catch { Console.WriteLine("error"); }
             }
             ReplaceEmote(texts, ids);
         }

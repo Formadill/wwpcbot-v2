@@ -18,7 +18,7 @@ namespace wwpcbot_v2.Functionalities
             {
                 if (Functionality.TagBool)
                 {
-                    if (Functionality.info.user_type == "mod" || Functionality.Sender == IRCconnect.MainIRC.Channel.Remove(0, 1))
+                    if (Functionality.info.user_type == "mod" || Functionality.Sender == IRCconnect.MainIRC.Channel.Remove(0, 1) || Functionality.Sender == IRCconnect.MainIRC.BotOwner)
                     {
                         cmdAdd(commandInput);
                     }
@@ -56,12 +56,13 @@ namespace wwpcbot_v2.Functionalities
                 }
                 if(found == true)
                 {
+                    response = replaceCmdCalls(response);
                     IRCconnect.sendPrivMsg(response);
                 }
             }
         }
 
-        public static void cmdAdd(string commandInput)
+        private static void cmdAdd(string commandInput)
         {
             string toAdd = commandInput.Substring(commandInput.IndexOf(" ") + 1);
             using (FileStream fs = new FileStream(cmdFilePath, FileMode.Append, FileAccess.Write))
@@ -70,6 +71,27 @@ namespace wwpcbot_v2.Functionalities
                 writer.WriteLine(toAdd);
             }
             IRCconnect.sendPrivMsg("Command added succesfully");
+        }
+
+        private static string replaceCmdCalls(string input)
+        {
+            string response = null;
+            if (input.Contains("$random("))
+                input = random(input);
+            response = input;
+            return response;
+        }
+
+        private static string random(string input)
+        {
+            string output = null;
+            Random random = new Random();
+            string _options = input.Substring(input.IndexOf("$random(") + 8);
+            _options = _options.Substring(0, _options.IndexOf(")"));
+            string[] options = _options.Split(',');
+            int index = random.Next(options.Length);
+            output = options[index];
+            return output;
         }
     }
 }

@@ -25,6 +25,7 @@ namespace wwpcbot_v2.Functionalities
             Functionality.CapBool = checkBoxTwitchCap.Checked;
             Functionality.MemBool = checkBoxMember.Checked;
             Functionality.TagBool = checkBoxTags.Checked;
+            Properties.Settings.Default.BotFunc = checkBoxCustomCmds.Checked;
             this.Close();
         }
 

@@ -40,16 +40,12 @@ namespace wwpcbot_v2.IRC
                 {
                     Functionality.CheckCmd(MainForm.form);
                 }
-                if (Functionality.TagBool)
-                {
-                    Functionality.parseTags();
-                }
+                
             }
         }
-        public static void connectMain(MainForm form)
+        public static void connectMain()
         {
-            //Task groupConnect = null;
-            Task.Factory.StartNew(() => { new ConnectForm().ShowDialog(); }).Wait();
+            MainForm form = MainForm.form;
             TcpClient mainClient = new TcpClient();
             mainClient.Connect(MainIRC.IRCip, MainIRC.IRCport);
             input = new StreamReader(mainClient.GetStream());
@@ -59,30 +55,36 @@ namespace wwpcbot_v2.IRC
                 "NICK " + MainIRC.BotNick + "\r\n"
             );    
         }
+
         public static void sendPrivMsg(string msg)
         {
             sendData("PRIVMSG " + MainIRC.Channel + " :" + msg + "\r\n");
         }
-        public static async Task listener(MainForm form)
+
+        public static async Task listener()
         {
-            
+            MainForm form = MainForm.form;
             try
             {
                 string data;
                 while ((data = await input.ReadLineAsync()) != null)
                 {
-                    form.AddToListBox(data);
                     _data = data;
+                    if (Functionality.TagBool == true)
+                    {
+                        Functionality.parseTags();
+                    }                
+                    form.AddToListBox(data);                  
                     if(data.Split(' ')[1] == "001")
                         sendData("CAP REQ :twitch.tv/commands" + "\r\n" +
                                  "MODE " + IRCconnect.MainIRC.BotNick + " +B\r\n" +
                                  "JOIN " + IRCconnect.MainIRC.Channel + "\r\n");
-                    if (data.StartsWith("PING ")) { sendData(data.Replace("PING", "PONG") + "\r\n");}
+                    if (data.StartsWith("PING ")) { sendData(data.Replace("PING", "PONG") + "\r\n");}                            
                 }
             }
-            catch (ObjectDisposedException)
+            catch
             {
-                // socket was closed forcefully
+                Console.WriteLine("error");
             }
         }
 

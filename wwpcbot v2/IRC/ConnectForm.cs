@@ -59,6 +59,8 @@ namespace wwpcbot_v2.IRC
             formOutputs.OAuthKey = textBoxOAuth.Text;
             IRCconnect.MainIRC = formOutputs;
             IRCconnect.ConnectToGroup = checkBoxGroupServer.Checked;
+            IRCconnect.connectMain();
+            IRCconnect.listener();  
             this.Close();
         }
     }

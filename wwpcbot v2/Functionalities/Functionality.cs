@@ -22,12 +22,12 @@ namespace wwpcbot_v2.Functionalities
 
         public static void ActivateFunc(MainForm form)
         {
-            Task.Factory.StartNew(() => { new AddFunc().ShowDialog(); }).Wait();
-            if(CmdBool == true)
-            {
-                IRCconnect.callCmdChk = true;
-            }
-            if(CapBool == true)
+            //Task.Factory.StartNew(() => { new AddFunc().ShowDialog(); }).Wait();
+            //if(CmdBool == true)
+            //{
+            //    IRCconnect.callCmdChk = true;
+            //}
+            if (CapBool == true)
             {
                 TwitchCap.mainControl(MemBool, TagBool);
             }
@@ -35,14 +35,13 @@ namespace wwpcbot_v2.Functionalities
 
         public static void CheckCmd(MainForm form)
         {
-            
             string _data = IRCconnect._data.Remove(0,1);
             string data = _data.Substring(_data.IndexOf(":") + 1);
             if (data.StartsWith("!"))
             {
-                Sender = data.Substring(0, data.IndexOf('!'));
+                
                 if (CustomCmdBool == true)
-                    Task.Factory.StartNew(() => CustomCommands.mainControl(data));
+                    Task.Factory.StartNew(() => CustomCommands.mainControl(data), CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
             }
             
         }
@@ -50,19 +49,15 @@ namespace wwpcbot_v2.Functionalities
         public static void parseTags()
         {
             string _data = IRCconnect._data;
-            if (TagBool == true && _data.StartsWith("@color=") && _data.Contains(IRCconnect.MainIRC.Channel))
+            if (TagBool == true && _data.StartsWith("@color="))
             {
                 string tags = _data.Substring(0, _data.IndexOf(" :"));
-                Console.WriteLine(tags);
                 info = TwitchCap.getTagValues(tags);
-                if (info.emote_sets != "")
-                {
-                    replaceEmotes();
-                }
+                
             }
         }
 
-        private static void replaceEmotes()
+        public static void replaceEmotes()
         {
             Task.Factory.StartNew(TwitchEmotes.ReplaceEmotes, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext()).Wait();
         }
