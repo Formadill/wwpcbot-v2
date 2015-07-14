@@ -30,6 +30,7 @@ namespace wwpcbot_v2.IRC
         public static TextWriter output;
         private static string __data;
         public static bool callCmdChk = false;
+        public static messageInfo MsgInfo;
         
         public static string _data
         {
@@ -70,10 +71,7 @@ namespace wwpcbot_v2.IRC
                 while ((data = await input.ReadLineAsync()) != null)
                 {
                     _data = data;
-                    if (Functionality.TagBool == true)
-                    {
-                        Functionality.parseTags();
-                    }                
+                    MsgInfo = TwitchCap.getMessageInfo();                
                     form.AddToListBox(data);                  
                     if(data.Split(' ')[1] == "001")
                         sendData("CAP REQ :twitch.tv/commands" + "\r\n" +

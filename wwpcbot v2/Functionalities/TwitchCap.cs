@@ -18,6 +18,11 @@ namespace wwpcbot_v2.Functionalities
         public string user_type;
     }
 
+    public struct messageInfo 
+    {
+        public string user;
+    }
+
     class TwitchCap
     {
         public static void mainControl(bool mem, bool tag)
@@ -54,6 +59,22 @@ namespace wwpcbot_v2.Functionalities
             info.subscriber = tags[3];
             info.turbo = tags[4];
             info.user_type = tags[5];
+            return info;
+        }
+
+        public static messageInfo getMessageInfo()
+        {
+            messageInfo info = new messageInfo();
+            if (Functionality.TagBool != true)
+            {
+                if (IRCconnect._data.Contains("PRIVMSG"))
+                    info.user = IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!")).Remove(0, 1);                
+            }
+            else
+            {
+                Functionality.parseTags();
+                info.user = Functionality.info.display_name;
+            }
             return info;
         }
     }
