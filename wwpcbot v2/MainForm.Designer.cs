@@ -1,4 +1,5 @@
-﻿namespace wwpcbot_v2
+﻿using System.Windows.Forms;
+namespace wwpcbot_v2
 {
     partial class MainForm
     {
@@ -37,6 +38,7 @@
             this.ToolStripMenuItemBot = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemTwitch = new System.Windows.Forms.ToolStripMenuItem();
             this.twitchChatLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twitchEmotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitchTagsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +78,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -107,11 +110,13 @@
             this.ToolStripMenuItemBot.Name = "ToolStripMenuItemBot";
             this.ToolStripMenuItemBot.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItemBot.Text = "Bot functionality";
+            this.ToolStripMenuItemBot.Click += new System.EventHandler(this.ToolStripMenuItemBot_Click);
             // 
             // ToolStripMenuItemTwitch
             // 
             this.ToolStripMenuItemTwitch.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.twitchChatLayoutToolStripMenuItem});
+            this.twitchChatLayoutToolStripMenuItem,
+            this.twitchEmotesToolStripMenuItem});
             this.ToolStripMenuItemTwitch.Name = "ToolStripMenuItemTwitch";
             this.ToolStripMenuItemTwitch.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItemTwitch.Text = "Twitch integration";
@@ -122,6 +127,12 @@
             this.twitchChatLayoutToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.twitchChatLayoutToolStripMenuItem.Text = "Twitch chat layout";
             this.twitchChatLayoutToolStripMenuItem.Click += new System.EventHandler(this.twitchChatLayoutToolStripMenuItem_Click);
+            // 
+            // twitchEmotesToolStripMenuItem
+            // 
+            this.twitchEmotesToolStripMenuItem.Name = "twitchEmotesToolStripMenuItem";
+            this.twitchEmotesToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.twitchEmotesToolStripMenuItem.Text = "Twitch emotes";
             // 
             // twitchTagsToolStripMenuItem
             // 
@@ -162,6 +173,7 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemTwitch;
         private System.Windows.Forms.ToolStripMenuItem twitchTagsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twitchChatLayoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem twitchEmotesToolStripMenuItem;
     }
 }
 

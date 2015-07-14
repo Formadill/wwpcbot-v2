@@ -39,9 +39,7 @@ namespace wwpcbot_v2.Functionalities
             string data = _data.Substring(_data.IndexOf(":") + 1);
             if (data.StartsWith("!"))
             {
-                
-                if (CustomCmdBool == true)
-                    Task.Factory.StartNew(() => CustomCommands.mainControl(data), CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
+                Task.Factory.StartNew(() => CustomCommands.mainControl(data), CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
             }
             
         }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System;
 using wwpcbot_v2.IRC;
 namespace wwpcbot_v2.Properties {
     
@@ -30,10 +31,6 @@ namespace wwpcbot_v2.Properties {
 
         private void SettingChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "BotFunc")
-            {
-                IRCconnect.callCmdChk = true;
-            }
         }
     }
 }

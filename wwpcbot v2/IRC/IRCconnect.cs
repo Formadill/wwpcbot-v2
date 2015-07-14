@@ -37,7 +37,7 @@ namespace wwpcbot_v2.IRC
             get { return __data; }
             set {
                 __data = value;
-                if (callCmdChk == true)
+                if (Properties.Settings.Default.BotFunc)
                 {
                     Functionality.CheckCmd(MainForm.form);
                 }

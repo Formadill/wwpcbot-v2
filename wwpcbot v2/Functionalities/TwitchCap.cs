@@ -68,7 +68,7 @@ namespace wwpcbot_v2.Functionalities
             if (Functionality.TagBool != true)
             {
                 if (IRCconnect._data.Contains("PRIVMSG"))
-                    info.user = IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!")).Remove(0, 1);                
+                    info.user = IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!")).Substring((IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!"))).IndexOf(" :") + 2);                
             }
             else
             {

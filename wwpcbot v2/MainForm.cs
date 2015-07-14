@@ -64,7 +64,6 @@ namespace wwpcbot_v2
         private void MainForm_Load(object sender, EventArgs e)
         {
             Color color = System.Drawing.ColorTranslator.FromHtml("#D3D3D3");
-            richTextBoxInput.Enabled = true;
             richTextBoxInput.BackColor = color;
         }
 
@@ -91,10 +90,26 @@ namespace wwpcbot_v2
 
         private void twitchChatLayoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Functionality.CapBool = true;
-            Functionality.TagBool = true;
-            Properties.Settings.Default.TwitchLayout = true;
-            Functionality.ActivateFunc(this); 
+            if (!twitchChatLayoutToolStripMenuItem.Checked)
+            {
+                Functionality.CapBool = true;
+                Functionality.TagBool = true;
+                Properties.Settings.Default.TwitchLayout = true;
+                Functionality.ActivateFunc(this);
+                twitchChatLayoutToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                Functionality.CapBool = false;
+                Functionality.TagBool = false;
+                Properties.Settings.Default.TwitchLayout = false;
+                twitchChatLayoutToolStripMenuItem.Checked = false;
+            }
+        }
+
+        private void ToolStripMenuItemBot_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.BotFunc = true;
         }
     }
 }
