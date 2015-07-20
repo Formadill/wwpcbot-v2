@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using wwpcbot_v2.Functionalities;
+using wwpcbot_v2.Commands;
 using wwpcbot_v2.IRC;
 
 namespace wwpcbot_v2.Layout

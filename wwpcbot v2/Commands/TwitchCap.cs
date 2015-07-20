@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using wwpcbot_v2;
 using wwpcbot_v2.IRC;
 
-namespace wwpcbot_v2.Functionalities
+namespace wwpcbot_v2.Commands
 {
     public struct tagInfo
     {

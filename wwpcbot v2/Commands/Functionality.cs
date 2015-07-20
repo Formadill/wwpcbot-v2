@@ -7,31 +7,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using wwpcbot_v2;
 using wwpcbot_v2.IRC;
+using wwpcbot_v2.TwitchInfo;
+using wwpcbot_v2.SpeedruncomInfo;
 
-namespace wwpcbot_v2.Functionalities
+namespace wwpcbot_v2.Commands
 {
     class Functionality
     {
-        public static bool CustomCmdBool;
-        public static bool CmdBool;
-        public static bool CapBool;
-        public static bool MemBool;
         public static bool TagBool;
         public static string Sender;
         public static tagInfo info;
-
-        public static void ActivateFunc(MainForm form)
-        {
-            //Task.Factory.StartNew(() => { new AddFunc().ShowDialog(); }).Wait();
-            //if(CmdBool == true)
-            //{
-            //    IRCconnect.callCmdChk = true;
-            //}
-            if (CapBool == true)
-            {
-                TwitchCap.mainControl(MemBool, TagBool);
-            }
-        }
 
         public static void CheckCmd(MainForm form)
         {
@@ -39,7 +24,10 @@ namespace wwpcbot_v2.Functionalities
             string data = _data.Substring(_data.IndexOf(IRCconnect.MainIRC.Channel + " :") + (IRCconnect.MainIRC.Channel + " :").Length);
             if (data.StartsWith("!"))
             {
-                Task.Factory.StartNew(() => CustomCommands.mainControl(data), CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
+                if (Properties.Settings.Default.CustomCmds == true)
+                    Task.Factory.StartNew(() => CustomCommands.mainControl(data), CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext()).Wait();
+                if (Properties.Settings.Default.SpeedrunCmds == true)
+                    SpeedrunCmds.SayCmds(data);
             }
             
         }

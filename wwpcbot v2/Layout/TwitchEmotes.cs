@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using wwpcbot_v2.Functionalities;
+using wwpcbot_v2.Commands;
 using Newtonsoft.Json;
 using RestSharp;
 using Newtonsoft.Json.Linq;

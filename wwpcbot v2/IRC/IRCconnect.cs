@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Net.Sockets;
 using System.IO;
 using System.Threading;
-using wwpcbot_v2.Functionalities;
+using wwpcbot_v2.Commands;
 using wwpcbot_v2;
 
 namespace wwpcbot_v2.IRC

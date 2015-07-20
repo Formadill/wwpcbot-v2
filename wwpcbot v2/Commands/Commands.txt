@@ -14,7 +14,6 @@
 !wwpc=WWPC stands for Weird Weaboo Porn Chat
 !twitch=Twitch dont give a shit
 !how2getpartner=LoL+Hearthstone+CS:GO
-!djoctavio=Slimy little hipster!
 !shutdown=LISTEN TO ME OR DIE 
 !help=Im not insane, plz help 
 !moderatorbot=I cri everytiem

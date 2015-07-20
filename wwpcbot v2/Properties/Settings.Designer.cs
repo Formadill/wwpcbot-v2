@@ -70,5 +70,29 @@ namespace wwpcbot_v2.Properties {
                 this["TwitchLayout"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SpeedrunCmds {
+            get {
+                return ((bool)(this["SpeedrunCmds"]));
+            }
+            set {
+                this["SpeedrunCmds"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TwitchInfoCmds {
+            get {
+                return ((bool)(this["TwitchInfoCmds"]));
+            }
+            set {
+                this["TwitchInfoCmds"] = value;
+            }
+        }
     }
 }

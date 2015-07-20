@@ -30,7 +30,6 @@ namespace wwpcbot_v2
         private void InitializeComponent()
         {
             this.textBoxSendPrivMsg = new System.Windows.Forms.TextBox();
-            this.buttonFunc = new System.Windows.Forms.Button();
             this.richTextBoxInput = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +38,9 @@ namespace wwpcbot_v2
             this.ToolStripMenuItemTwitch = new System.Windows.Forms.ToolStripMenuItem();
             this.twitchChatLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitchEmotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.twitchTagsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.speedrunCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twitchStreamInfoCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,22 +48,11 @@ namespace wwpcbot_v2
             // 
             this.textBoxSendPrivMsg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSendPrivMsg.Location = new System.Drawing.Point(12, 429);
+            this.textBoxSendPrivMsg.Location = new System.Drawing.Point(12, 500);
             this.textBoxSendPrivMsg.Name = "textBoxSendPrivMsg";
-            this.textBoxSendPrivMsg.Size = new System.Drawing.Size(508, 20);
+            this.textBoxSendPrivMsg.Size = new System.Drawing.Size(758, 20);
             this.textBoxSendPrivMsg.TabIndex = 2;
             this.textBoxSendPrivMsg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSendPrivMsg_KeyDown);
-            // 
-            // buttonFunc
-            // 
-            this.buttonFunc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonFunc.Location = new System.Drawing.Point(526, 33);
-            this.buttonFunc.Name = "buttonFunc";
-            this.buttonFunc.Size = new System.Drawing.Size(75, 23);
-            this.buttonFunc.TabIndex = 3;
-            this.buttonFunc.Text = "Functionality";
-            this.buttonFunc.UseVisualStyleBackColor = true;
-            this.buttonFunc.Click += new System.EventHandler(this.buttonFunc_Click);
             // 
             // richTextBoxInput
             // 
@@ -72,7 +62,7 @@ namespace wwpcbot_v2
             this.richTextBoxInput.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxInput.Location = new System.Drawing.Point(12, 33);
             this.richTextBoxInput.Name = "richTextBoxInput";
-            this.richTextBoxInput.Size = new System.Drawing.Size(508, 393);
+            this.richTextBoxInput.Size = new System.Drawing.Size(758, 464);
             this.richTextBoxInput.TabIndex = 4;
             this.richTextBoxInput.Text = "";
             // 
@@ -83,7 +73,7 @@ namespace wwpcbot_v2
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(613, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(782, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -92,8 +82,7 @@ namespace wwpcbot_v2
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemConnect,
             this.ToolStripMenuItemBot,
-            this.ToolStripMenuItemTwitch,
-            this.twitchTagsToolStripMenuItem});
+            this.ToolStripMenuItemTwitch});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
@@ -107,6 +96,10 @@ namespace wwpcbot_v2
             // 
             // ToolStripMenuItemBot
             // 
+            this.ToolStripMenuItemBot.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customCommandsToolStripMenuItem,
+            this.speedrunCommandsToolStripMenuItem,
+            this.twitchStreamInfoCommandsToolStripMenuItem});
             this.ToolStripMenuItemBot.Name = "ToolStripMenuItemBot";
             this.ToolStripMenuItemBot.Size = new System.Drawing.Size(171, 22);
             this.ToolStripMenuItemBot.Text = "Bot functionality";
@@ -135,20 +128,32 @@ namespace wwpcbot_v2
             this.twitchEmotesToolStripMenuItem.Text = "Twitch emotes";
             this.twitchEmotesToolStripMenuItem.Click += new System.EventHandler(this.twitchEmotesToolStripMenuItem_Click);
             // 
-            // twitchTagsToolStripMenuItem
+            // customCommandsToolStripMenuItem
             // 
-            this.twitchTagsToolStripMenuItem.Name = "twitchTagsToolStripMenuItem";
-            this.twitchTagsToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.twitchTagsToolStripMenuItem.Text = "Twitch Tags";
-            this.twitchTagsToolStripMenuItem.Click += new System.EventHandler(this.twitchTagsToolStripMenuItem_Click);
+            this.customCommandsToolStripMenuItem.Name = "customCommandsToolStripMenuItem";
+            this.customCommandsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.customCommandsToolStripMenuItem.Text = "Custom commands";
+            this.customCommandsToolStripMenuItem.Click += new System.EventHandler(this.customCommandsToolStripMenuItem_Click);
+            // 
+            // speedrunCommandsToolStripMenuItem
+            // 
+            this.speedrunCommandsToolStripMenuItem.Name = "speedrunCommandsToolStripMenuItem";
+            this.speedrunCommandsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.speedrunCommandsToolStripMenuItem.Text = "Speedrun commands";
+            this.speedrunCommandsToolStripMenuItem.Click += new System.EventHandler(this.speedrunCommandsToolStripMenuItem_Click);
+            // 
+            // twitchStreamInfoCommandsToolStripMenuItem
+            // 
+            this.twitchStreamInfoCommandsToolStripMenuItem.Name = "twitchStreamInfoCommandsToolStripMenuItem";
+            this.twitchStreamInfoCommandsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.twitchStreamInfoCommandsToolStripMenuItem.Text = "Twitch stream info commands";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(613, 470);
+            this.ClientSize = new System.Drawing.Size(782, 541);
             this.Controls.Add(this.richTextBoxInput);
-            this.Controls.Add(this.buttonFunc);
             this.Controls.Add(this.textBoxSendPrivMsg);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -165,16 +170,17 @@ namespace wwpcbot_v2
         #endregion
 
         private System.Windows.Forms.TextBox textBoxSendPrivMsg;
-        private System.Windows.Forms.Button buttonFunc;
         public System.Windows.Forms.RichTextBox richTextBoxInput;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemConnect;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemBot;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemTwitch;
-        private System.Windows.Forms.ToolStripMenuItem twitchTagsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twitchChatLayoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twitchEmotesToolStripMenuItem;
+        private ToolStripMenuItem customCommandsToolStripMenuItem;
+        private ToolStripMenuItem speedrunCommandsToolStripMenuItem;
+        private ToolStripMenuItem twitchStreamInfoCommandsToolStripMenuItem;
     }
 }
 

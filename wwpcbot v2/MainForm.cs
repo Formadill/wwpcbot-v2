@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using wwpcbot_v2;
-using wwpcbot_v2.Functionalities;
+using wwpcbot_v2.Commands;
 using wwpcbot_v2.IRC;
 using System.Globalization;
 using wwpcbot_v2.Layout;
@@ -54,11 +54,6 @@ namespace wwpcbot_v2
                 IRCconnect.sendPrivMsg(textBoxSendPrivMsg.Text);
                 textBoxSendPrivMsg.Text = "";
             }
-        }
-
-        private void buttonFunc_Click(object sender, EventArgs e)
-        {
-            Functionality.ActivateFunc(this);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -120,6 +115,34 @@ namespace wwpcbot_v2
             {
                 Properties.Settings.Default.TwitchEmotes = false;
                 twitchEmotesToolStripMenuItem.Checked = false;
+            }
+        }
+
+        private void customCommandsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!customCommandsToolStripMenuItem.Checked)
+            {
+                Properties.Settings.Default.CustomCmds = true;
+                customCommandsToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                Properties.Settings.Default.CustomCmds = false;
+                customCommandsToolStripMenuItem.Checked = false;
+            }
+        }
+
+        private void speedrunCommandsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!speedrunCommandsToolStripMenuItem.Checked)
+            {
+                Properties.Settings.Default.SpeedrunCmds = true;
+                speedrunCommandsToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                Properties.Settings.Default.SpeedrunCmds = false;
+                speedrunCommandsToolStripMenuItem.Checked = false;
             }
         }
     }

@@ -7,11 +7,11 @@ using System.IO;
 using wwpcbot_v2;
 using wwpcbot_v2.IRC;
 
-namespace wwpcbot_v2.Functionalities
+namespace wwpcbot_v2.Commands
 {
     class CustomCommands
     {
-        private static string cmdFilePath = "Functionalities/Commands.txt";
+        private static string cmdFilePath = "Commands/Commands.txt";
         public static void mainControl(string commandInput)
         {
             if (commandInput.StartsWith("!addcommand "))
