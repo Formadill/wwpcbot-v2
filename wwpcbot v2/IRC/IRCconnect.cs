@@ -90,7 +90,7 @@ namespace wwpcbot_v2.IRC
         {
             output.WriteAsync(data);
             output.FlushAsync();
-            MainForm.form.AddToListBox(data.Replace(Environment.NewLine, ""));
+            MainForm.form.richTextBoxInput.AppendText(data.Replace(Environment.NewLine, "") + Environment.NewLine + Environment.NewLine);
         }
 
         public static void connectGroup()

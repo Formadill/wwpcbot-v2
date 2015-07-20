@@ -133,6 +133,7 @@ namespace wwpcbot_v2
             this.twitchEmotesToolStripMenuItem.Name = "twitchEmotesToolStripMenuItem";
             this.twitchEmotesToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.twitchEmotesToolStripMenuItem.Text = "Twitch emotes";
+            this.twitchEmotesToolStripMenuItem.Click += new System.EventHandler(this.twitchEmotesToolStripMenuItem_Click);
             // 
             // twitchTagsToolStripMenuItem
             // 

@@ -32,7 +32,7 @@ namespace wwpcbot_v2
                     texts.Add(MainForm.form.GetTextFromPos(Convert.ToInt32(placevalues[0]), Convert.ToInt32(placevalues[1])));
                     i++;
                 }
-                catch { Console.WriteLine("error"); }
+                catch { Console.WriteLine("error2"); }
             }
             ReplaceEmote(texts, ids);
         }

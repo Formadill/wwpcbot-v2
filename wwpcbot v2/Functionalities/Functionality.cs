@@ -36,7 +36,7 @@ namespace wwpcbot_v2.Functionalities
         public static void CheckCmd(MainForm form)
         {
             string _data = IRCconnect._data.Remove(0,1);
-            string data = _data.Substring(_data.IndexOf(":") + 1);
+            string data = _data.Substring(_data.IndexOf(IRCconnect.MainIRC.Channel + " :") + (IRCconnect.MainIRC.Channel + " :").Length);
             if (data.StartsWith("!"))
             {
                 Task.Factory.StartNew(() => CustomCommands.mainControl(data), CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
@@ -47,7 +47,7 @@ namespace wwpcbot_v2.Functionalities
         public static void parseTags()
         {
             string _data = IRCconnect._data;
-            if (TagBool == true && _data.StartsWith("@color="))
+            if (_data.StartsWith("@color="))
             {
                 string tags = _data.Substring(0, _data.IndexOf(" :"));
                 info = TwitchCap.getTagValues(tags);

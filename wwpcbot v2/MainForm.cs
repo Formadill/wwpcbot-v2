@@ -72,7 +72,7 @@ namespace wwpcbot_v2
             string text = null;
             int totalLines = richTextBoxInput.Lines.Length;
             string lastLine = richTextBoxInput.Lines[totalLines - 3];
-            lastLine = lastLine.Substring(lastLine.IndexOf(":") + 2);
+            lastLine = lastLine.Substring(lastLine.IndexOf(IRCconnect.MsgInfo.user + ": ") + (IRCconnect.MsgInfo.user + ": ").Length);
             text = lastLine.Substring(0, end + 1).Substring(start);
             return text;
         }
@@ -92,16 +92,12 @@ namespace wwpcbot_v2
         {
             if (!twitchChatLayoutToolStripMenuItem.Checked)
             {
-                Functionality.CapBool = true;
-                Functionality.TagBool = true;
                 Properties.Settings.Default.TwitchLayout = true;
-                Functionality.ActivateFunc(this);
                 twitchChatLayoutToolStripMenuItem.Checked = true;
+                TwitchCap.ackTag();
             }
             else
             {
-                Functionality.CapBool = false;
-                Functionality.TagBool = false;
                 Properties.Settings.Default.TwitchLayout = false;
                 twitchChatLayoutToolStripMenuItem.Checked = false;
             }
@@ -110,6 +106,21 @@ namespace wwpcbot_v2
         private void ToolStripMenuItemBot_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.BotFunc = true;
+        }
+
+        private void twitchEmotesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!twitchEmotesToolStripMenuItem.Checked)
+            {
+                Properties.Settings.Default.TwitchEmotes = true;
+                twitchEmotesToolStripMenuItem.Checked = true;
+                TwitchCap.ackTag();
+            }
+            else
+            {
+                Properties.Settings.Default.TwitchEmotes = false;
+                twitchEmotesToolStripMenuItem.Checked = false;
+            }
         }
     }
 }

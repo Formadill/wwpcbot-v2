@@ -78,6 +78,8 @@ namespace wwpcbot_v2.Functionalities
             string response = null;
             if (input.Contains("$random("))
                 input = random(input);
+            if (input.Contains("$user"))
+                input = input.Replace("$user", IRCconnect.MsgInfo.user);
             response = input;
             return response;
         }
