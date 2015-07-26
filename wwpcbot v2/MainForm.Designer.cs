@@ -35,12 +35,13 @@ namespace wwpcbot_v2
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemConnect = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemBot = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemTwitch = new System.Windows.Forms.ToolStripMenuItem();
-            this.twitchChatLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.twitchEmotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.speedrunCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitchStreamInfoCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemTwitch = new System.Windows.Forms.ToolStripMenuItem();
+            this.twitchChatLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twitchEmotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bTTVEmotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,7 +91,7 @@ namespace wwpcbot_v2
             // ToolStripMenuItemConnect
             // 
             this.ToolStripMenuItemConnect.Name = "ToolStripMenuItemConnect";
-            this.ToolStripMenuItemConnect.Size = new System.Drawing.Size(171, 22);
+            this.ToolStripMenuItemConnect.Size = new System.Drawing.Size(162, 22);
             this.ToolStripMenuItemConnect.Text = "Connect";
             this.ToolStripMenuItemConnect.Click += new System.EventHandler(this.ToolStripMenuItemConnect_Click);
             // 
@@ -101,32 +102,9 @@ namespace wwpcbot_v2
             this.speedrunCommandsToolStripMenuItem,
             this.twitchStreamInfoCommandsToolStripMenuItem});
             this.ToolStripMenuItemBot.Name = "ToolStripMenuItemBot";
-            this.ToolStripMenuItemBot.Size = new System.Drawing.Size(171, 22);
+            this.ToolStripMenuItemBot.Size = new System.Drawing.Size(162, 22);
             this.ToolStripMenuItemBot.Text = "Bot functionality";
             this.ToolStripMenuItemBot.Click += new System.EventHandler(this.ToolStripMenuItemBot_Click);
-            // 
-            // ToolStripMenuItemTwitch
-            // 
-            this.ToolStripMenuItemTwitch.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.twitchChatLayoutToolStripMenuItem,
-            this.twitchEmotesToolStripMenuItem});
-            this.ToolStripMenuItemTwitch.Name = "ToolStripMenuItemTwitch";
-            this.ToolStripMenuItemTwitch.Size = new System.Drawing.Size(171, 22);
-            this.ToolStripMenuItemTwitch.Text = "Twitch integration";
-            // 
-            // twitchChatLayoutToolStripMenuItem
-            // 
-            this.twitchChatLayoutToolStripMenuItem.Name = "twitchChatLayoutToolStripMenuItem";
-            this.twitchChatLayoutToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.twitchChatLayoutToolStripMenuItem.Text = "Twitch chat layout";
-            this.twitchChatLayoutToolStripMenuItem.Click += new System.EventHandler(this.twitchChatLayoutToolStripMenuItem_Click);
-            // 
-            // twitchEmotesToolStripMenuItem
-            // 
-            this.twitchEmotesToolStripMenuItem.Name = "twitchEmotesToolStripMenuItem";
-            this.twitchEmotesToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.twitchEmotesToolStripMenuItem.Text = "Twitch emotes";
-            this.twitchEmotesToolStripMenuItem.Click += new System.EventHandler(this.twitchEmotesToolStripMenuItem_Click);
             // 
             // customCommandsToolStripMenuItem
             // 
@@ -147,6 +125,38 @@ namespace wwpcbot_v2
             this.twitchStreamInfoCommandsToolStripMenuItem.Name = "twitchStreamInfoCommandsToolStripMenuItem";
             this.twitchStreamInfoCommandsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.twitchStreamInfoCommandsToolStripMenuItem.Text = "Twitch stream info commands";
+            this.twitchStreamInfoCommandsToolStripMenuItem.Click += new System.EventHandler(this.twitchStreamInfoCommandsToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemTwitch
+            // 
+            this.ToolStripMenuItemTwitch.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.twitchChatLayoutToolStripMenuItem,
+            this.twitchEmotesToolStripMenuItem,
+            this.bTTVEmotesToolStripMenuItem});
+            this.ToolStripMenuItemTwitch.Name = "ToolStripMenuItemTwitch";
+            this.ToolStripMenuItemTwitch.Size = new System.Drawing.Size(162, 22);
+            this.ToolStripMenuItemTwitch.Text = "Layout";
+            // 
+            // twitchChatLayoutToolStripMenuItem
+            // 
+            this.twitchChatLayoutToolStripMenuItem.Name = "twitchChatLayoutToolStripMenuItem";
+            this.twitchChatLayoutToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.twitchChatLayoutToolStripMenuItem.Text = "Twitch chat layout";
+            this.twitchChatLayoutToolStripMenuItem.Click += new System.EventHandler(this.twitchChatLayoutToolStripMenuItem_Click);
+            // 
+            // twitchEmotesToolStripMenuItem
+            // 
+            this.twitchEmotesToolStripMenuItem.Name = "twitchEmotesToolStripMenuItem";
+            this.twitchEmotesToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.twitchEmotesToolStripMenuItem.Text = "Twitch emotes";
+            this.twitchEmotesToolStripMenuItem.Click += new System.EventHandler(this.twitchEmotesToolStripMenuItem_Click);
+            // 
+            // bTTVEmotesToolStripMenuItem
+            // 
+            this.bTTVEmotesToolStripMenuItem.Name = "bTTVEmotesToolStripMenuItem";
+            this.bTTVEmotesToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.bTTVEmotesToolStripMenuItem.Text = "BTTV emotes";
+            this.bTTVEmotesToolStripMenuItem.Click += new System.EventHandler(this.bTTVEmotesToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -181,6 +191,7 @@ namespace wwpcbot_v2
         private ToolStripMenuItem customCommandsToolStripMenuItem;
         private ToolStripMenuItem speedrunCommandsToolStripMenuItem;
         private ToolStripMenuItem twitchStreamInfoCommandsToolStripMenuItem;
+        private ToolStripMenuItem bTTVEmotesToolStripMenuItem;
     }
 }
 

@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 using wwpcbot_v2.IRC;
 using System.Xml;
 
-namespace wwpcbot_v2.SpeedruncomInfo
+namespace wwpcbot_v2.API
 {
     struct PlayerInfo
     {
@@ -26,7 +26,7 @@ namespace wwpcbot_v2.SpeedruncomInfo
             request.AddParameter("game", game, ParameterType.UrlSegment);
             request.AddParameter("max", 1);
             var obj1 = client.Execute(request);
-            var pObj1 = JToken.Parse(obj1.Content);
+            var pObj1 = JObject.Parse(obj1.Content);
             var paObj1 = JArray.Parse((string)pObj1["data"].ToString());
             foreach (JObject a in paObj1)
             {
@@ -47,9 +47,8 @@ namespace wwpcbot_v2.SpeedruncomInfo
             request.AddParameter("skip-empty", "yes");
             request.AddParameter("max", 1);
             var obj = client.Execute(request);
-            var pObj = JToken.Parse(obj.Content);
+            var pObj = JObject.Parse(obj.Content);
             var paObj = JArray.Parse((string)pObj["data"].ToString());
-            Console.WriteLine(paObj);
             JArray pObj2 = null;
             foreach (JObject a in paObj)
             {

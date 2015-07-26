@@ -94,5 +94,29 @@ namespace wwpcbot_v2.Properties {
                 this["TwitchInfoCmds"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool BTTVEmotes {
+            get {
+                return ((bool)(this["BTTVEmotes"]));
+            }
+            set {
+                this["BTTVEmotes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("AIzaSyAhXSAtf28BGXx2uOw2NFHYWpHE7F1cRKg")]
+        public string YoutubeAPIkey {
+            get {
+                return ((string)(this["YoutubeAPIkey"]));
+            }
+            set {
+                this["YoutubeAPIkey"] = value;
+            }
+        }
     }
 }

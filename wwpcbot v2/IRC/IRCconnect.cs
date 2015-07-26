@@ -12,7 +12,7 @@ using wwpcbot_v2;
 
 namespace wwpcbot_v2.IRC
 {
-    public struct IRCconnectInfo
+    struct IRCconnectInfo
     {
         public string IRCip;
         public int IRCport;
@@ -29,7 +29,6 @@ namespace wwpcbot_v2.IRC
         public static TextReader input;
         public static TextWriter output;
         private static string __data;
-        public static bool callCmdChk = false;
         public static messageInfo MsgInfo;
         
         public static string _data
@@ -37,9 +36,10 @@ namespace wwpcbot_v2.IRC
             get { return __data; }
             set {
                 __data = value;
+                MsgInfo = TwitchCap.getMessageInfo();  
                 if (Properties.Settings.Default.BotFunc)
                 {
-                    Functionality.CheckCmd(MainForm.form);
+                    CmdControl.CheckCmd(MainForm.form);
                 }
                 
             }
@@ -71,7 +71,7 @@ namespace wwpcbot_v2.IRC
                 while ((data = await input.ReadLineAsync()) != null)
                 {
                     _data = data;
-                    MsgInfo = TwitchCap.getMessageInfo();                
+                                  
                     form.AddToListBox(data);                  
                     if(data.Split(' ')[1] == "001")
                         sendData("CAP REQ :twitch.tv/commands" + "\r\n" +

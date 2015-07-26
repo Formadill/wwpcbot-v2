@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using wwpcbot_v2.SpeedruncomInfo;
-using wwpcbot_v2.TwitchInfo;
+using wwpcbot_v2.API;
 using wwpcbot_v2.IRC;
 
 namespace wwpcbot_v2.Commands
 {
     class SpeedrunCmds
     {
-        public static void SayCmds(string command)
+        public static void mainControl(string command)
         {
-            if (command.StartsWith("!wr"))
+            if (command == "!wr")
                 WRCmd();
         }
 

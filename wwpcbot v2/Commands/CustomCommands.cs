@@ -6,29 +6,31 @@ using System.Threading.Tasks;
 using System.IO;
 using wwpcbot_v2;
 using wwpcbot_v2.IRC;
+using wwpcbot_v2.API;
 
 namespace wwpcbot_v2.Commands
 {
     class CustomCommands
     {
         private static string cmdFilePath = "Commands/Commands.txt";
-        public static void mainControl(string commandInput)
+        private static bool allow = true;
+        public static void mainControl(string command)
         {
-            if (commandInput.StartsWith("!addcommand "))
+            if (command.StartsWith("!addcommand "))
             {
-                if (Functionality.TagBool)
+                if (TwitchCap.ack)
                 {
-                    if (Functionality.info.user_type == "mod" || Functionality.Sender == IRCconnect.MainIRC.Channel.Remove(0, 1) || Functionality.Sender == IRCconnect.MainIRC.BotOwner)
+                    if (CmdControl.info.user_type == "mod" || TwitchCap.Sender == IRCconnect.MainIRC.Channel.Remove(0, 1) || TwitchCap.Sender == IRCconnect.MainIRC.BotOwner)
                     {
-                        cmdAdd(commandInput);
+                        cmdAdd(command);
                     }
                 }
                 else
-                    cmdAdd(commandInput);
+                    cmdAdd(command);
             }
             else
             {
-                cmdReply(commandInput);
+                cmdReply(command);
             }
         }
 
@@ -36,7 +38,8 @@ namespace wwpcbot_v2.Commands
         {
             string command;
             string response = null;
-            
+            string cmdfuncs = null;
+            allow = true;
             command = commandInput;
             if (commandInput.Contains(" "))
                 command = commandInput.Substring(0, commandInput.IndexOf(" "));
@@ -48,16 +51,20 @@ namespace wwpcbot_v2.Commands
                 while (!string.IsNullOrEmpty((line = sr.ReadLine())) && found == false)
                 {
                     string[] tmp = line.Split(new[] { "=" }, 2, StringSplitOptions.None);
-                    if(tmp[0] == command)
+                    if(tmp[0].StartsWith(command))
                     {
                         response = tmp[1];
+                        cmdfuncs = tmp[0];
                         found = true;
                     }
                 }
                 if(found == true)
                 {
+                    if (cmdfuncs.Contains('-'))
+                        cmdFuncs(cmdfuncs);
                     response = replaceCmdCalls(response);
-                    IRCconnect.sendPrivMsg(response);
+                    if (allow)
+                        IRCconnect.sendPrivMsg(response);
                 }
             }
         }
@@ -82,6 +89,28 @@ namespace wwpcbot_v2.Commands
                 input = input.Replace("$user", IRCconnect.MsgInfo.user);
             response = input;
             return response;
+        }
+
+        private static void cmdFuncs(string _funcs)
+        {
+            string _func = _funcs.Substring(_funcs.IndexOf(' '));
+            string[] funcs = _func.Replace("-", "").Split(' ');
+            foreach (string func in funcs)
+            {
+                if (func == "m" && TwitchCap.ack)
+                {
+                    if (!(CmdControl.info.user_type == "mod" || TwitchCap.Sender == IRCconnect.MainIRC.Channel.Remove(0, 1) || TwitchCap.Sender == IRCconnect.MainIRC.BotOwner))
+                        allow = false;
+                }
+                else if (func.StartsWith("g"))
+                {
+                    string _id = func.Substring(func.IndexOf("g") + 1);
+                    string game = GetStrmInfo.GetGame(IRCconnect.MainIRC.Channel.Remove(0, 1));
+                    string id = GetSpeedrunInfo.GetGameID(game);
+                    if (_id != id)
+                        allow = false;
+                }
+            }
         }
 
         private static string random(string input)

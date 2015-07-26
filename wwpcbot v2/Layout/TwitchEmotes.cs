@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using wwpcbot_v2.IRC;
 using System.Net;
 using System.Drawing;
+using System.Threading;
 
 namespace wwpcbot_v2
 {
@@ -17,7 +18,7 @@ namespace wwpcbot_v2
     {     
         public static void ReplaceEmotes()
         {
-            string[] emotes = Functionality.info.emote_sets.Split('/');
+            string[] emotes = CmdControl.info.emote_sets.Split('/');
             List<string> texts = new List<string>();
             List<int> ids = new List<int>();
             int i = 0;
@@ -52,6 +53,38 @@ namespace wwpcbot_v2
                     MainForm.form.TextToImg(text, img);
                 }
                 i++;
+            }
+        }
+
+        public static void bttvEmotes()
+        {
+            MainForm form = MainForm.form;
+            var client = new RestClient("https://cdn.betterttv.net/");
+            var request = new RestRequest("emotes/emotes.json", Method.GET);
+            var obj = client.Execute(request);
+            try
+            {
+                var paObj = JArray.Parse(obj.Content);
+
+                foreach (JObject j in paObj)
+                {
+                    if (form.richTextBoxInput.Text.Contains((string)j["regex"]))
+                    {
+                        var request2 = WebRequest.Create("https:" + (string)j["url"]);
+                        using (var response = request2.GetResponse())
+                        using (var stream = response.GetResponseStream())
+                        {
+                            Image img = Bitmap.FromStream(stream);
+                            MainForm.form.TextToImg((string)j["regex"], img);
+                        }
+                        break;
+                    }
+                }
+            }
+            catch
+            {
+                Console.WriteLine("timeout");
+                Console.WriteLine(obj.Content);
             }
         }
     }

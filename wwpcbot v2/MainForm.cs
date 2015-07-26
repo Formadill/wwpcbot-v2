@@ -30,7 +30,7 @@ namespace wwpcbot_v2
         {
             addString = ChatLayout.removeIRCtext(addString);
             richTextBoxInput.AppendText(addString + Environment.NewLine + Environment.NewLine);
-            ChatLayout.addToChatLayout();
+            Task.Factory.StartNew(ChatLayout.addToChatLayout, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         public void TextToImg(string text, Image img)
@@ -143,6 +143,34 @@ namespace wwpcbot_v2
             {
                 Properties.Settings.Default.SpeedrunCmds = false;
                 speedrunCommandsToolStripMenuItem.Checked = false;
+            }
+        }
+
+        private void twitchStreamInfoCommandsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!twitchStreamInfoCommandsToolStripMenuItem.Checked)
+            {
+                Properties.Settings.Default.TwitchInfoCmds = true;
+                twitchStreamInfoCommandsToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                Properties.Settings.Default.TwitchInfoCmds = false;
+                twitchStreamInfoCommandsToolStripMenuItem.Checked = false;
+            }
+        }
+
+        private void bTTVEmotesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!bTTVEmotesToolStripMenuItem.Checked)
+            {
+                Properties.Settings.Default.BTTVEmotes = true;
+                bTTVEmotesToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                Properties.Settings.Default.BTTVEmotes = false;
+                bTTVEmotesToolStripMenuItem.Checked = false;
             }
         }
     }

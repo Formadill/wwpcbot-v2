@@ -25,6 +25,7 @@ namespace wwpcbot_v2.Commands
 
     class TwitchCap
     {
+        public static string Sender;
         public static bool ack = false;
         public static void mainControl(bool mem, bool tag)
         {
@@ -72,14 +73,19 @@ namespace wwpcbot_v2.Commands
             if (TwitchCap.ack != true)
             {
                 if (IRCconnect._data.Contains("PRIVMSG"))
+                {
                     info.user = IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!")).Substring((IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!"))).IndexOf(" :") + 2);
+                    Sender = IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!")).Substring((IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!"))).IndexOf(" :") + 2);
+                }
                 if (IRCconnect._data.Contains("CAP * ACK :twitch.tv/tags"))
                     ack = true;
             }
             else
             {
-                Functionality.parseTags();
-                info.user = Functionality.info.display_name;
+                CmdControl.parseTags();
+                info.user = CmdControl.info.display_name;
+                if(IRCconnect._data.Contains("PRIVMSG"))
+                    Sender = IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!")).Substring((IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!"))).IndexOf(" :") + 2);
             }
             return info;
         }

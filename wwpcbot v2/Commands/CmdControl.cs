@@ -7,27 +7,27 @@ using System.Threading;
 using System.Threading.Tasks;
 using wwpcbot_v2;
 using wwpcbot_v2.IRC;
-using wwpcbot_v2.TwitchInfo;
-using wwpcbot_v2.SpeedruncomInfo;
+using wwpcbot_v2.API;
 
 namespace wwpcbot_v2.Commands
 {
-    class Functionality
+    class CmdControl
     {
-        public static bool TagBool;
-        public static string Sender;
         public static tagInfo info;
 
         public static void CheckCmd(MainForm form)
         {
             string _data = IRCconnect._data.Remove(0,1);
             string data = _data.Substring(_data.IndexOf(IRCconnect.MainIRC.Channel + " :") + (IRCconnect.MainIRC.Channel + " :").Length);
+            YoutubeFunc.mainControl(data);
             if (data.StartsWith("!"))
             {
-                if (Properties.Settings.Default.CustomCmds == true)
-                    Task.Factory.StartNew(() => CustomCommands.mainControl(data), CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext()).Wait();
-                if (Properties.Settings.Default.SpeedrunCmds == true)
-                    SpeedrunCmds.SayCmds(data);
+                if (Properties.Settings.Default.CustomCmds)
+                    CustomCommands.mainControl(data);
+                if (Properties.Settings.Default.SpeedrunCmds)
+                    SpeedrunCmds.mainControl(data);
+                if (Properties.Settings.Default.TwitchInfoCmds)
+                    TwitchInfoCmds.mainControl(data);
             }
             
         }

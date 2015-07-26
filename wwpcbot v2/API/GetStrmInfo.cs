@@ -7,7 +7,7 @@ using RestSharp;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace wwpcbot_v2.TwitchInfo
+namespace wwpcbot_v2.API
 {
     class GetStrmInfo
     {
