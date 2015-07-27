@@ -29,15 +29,11 @@ namespace wwpcbot_v2.API
             request.AddParameter("key", Properties.Settings.Default.YoutubeAPIkey);
             var obj = client.Execute(request);
             var pObj = JToken.Parse(obj.Content);
-            var paObj = JArray.Parse((string)pObj["items"].ToString());
-            foreach (JObject j in paObj)
-            {
-                info.title = (string)j["snippet"]["title"];
-                info.creator = (string)j["snippet"]["channelTitle"];
-                info.views = (int)j["statistics"]["viewCount"];
-                info.likes = (int)j["statistics"]["likeCount"];
-                info.likes = (int)j["statistics"]["dislikeCount"];
-            }
+            info.title = (string)pObj["items"][0]["snippet"]["title"];
+            info.creator = (string)pObj["items"][0]["snippet"]["channelTitle"];
+            info.views = (int)pObj["items"][0]["statistics"]["viewCount"];
+            info.likes = (int)pObj["items"][0]["statistics"]["likeCount"];
+            info.dislikes = (int)pObj["items"][0]["statistics"]["dislikeCount"];
             return info;
         }
     }

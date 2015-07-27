@@ -27,11 +27,7 @@ namespace wwpcbot_v2.API
             request.AddParameter("max", 1);
             var obj1 = client.Execute(request);
             var pObj1 = JObject.Parse(obj1.Content);
-            var paObj1 = JArray.Parse((string)pObj1["data"].ToString());
-            foreach (JObject a in paObj1)
-            {
-                id = (string)a["id"];
-            }
+            id = (string)pObj1["data"][0]["id"];
             return id;
         }
 
@@ -48,24 +44,9 @@ namespace wwpcbot_v2.API
             request.AddParameter("max", 1);
             var obj = client.Execute(request);
             var pObj = JObject.Parse(obj.Content);
-            var paObj = JArray.Parse((string)pObj["data"].ToString());
-            JArray pObj2 = null;
-            foreach (JObject a in paObj)
-            {
-                pObj2 = JArray.Parse((string)a["runs"].ToString());
-            }
-            JObject pObj3 = null;
-            foreach (JObject a in pObj2)
-            {
-                pObj3 = (JObject)a["run"];
-            }
-            wr = (string)pObj3["times"]["primary"];
-            var playerArray = JArray.Parse((string)pObj3["players"].ToString());
+            wr = (string)pObj["data"][0]["runs"][0]["run"]["times"]["primary"];
             PlayerInfo info = new PlayerInfo();
-            foreach (JObject a in playerArray)
-            {
-                info = GetPlayerInfo((string)a["id"]);
-            }
+            info = GetPlayerInfo((string)pObj["data"][0]["runs"][0]["run"]["players"][0]["id"]);
             TimeSpan t2 = XmlConvert.ToTimeSpan(wr);
             if (wr.Contains("H"))
                 wr = t2.ToString(@"h\:mm\:ss");
