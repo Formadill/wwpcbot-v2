@@ -14,6 +14,7 @@ using wwpcbot_v2.Commands;
 using wwpcbot_v2.IRC;
 using System.Globalization;
 using wwpcbot_v2.Layout;
+using wwpcbot_v2.API.OAuth2;
 
 namespace wwpcbot_v2
 {
@@ -22,6 +23,7 @@ namespace wwpcbot_v2
         public static MainForm form;
         public MainForm()
         {
+            
             InitializeComponent();
             form = this;
         }
@@ -100,7 +102,7 @@ namespace wwpcbot_v2
 
         private void ToolStripMenuItemBot_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.BotFunc = true;
+            
         }
 
         private void twitchEmotesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -172,6 +174,17 @@ namespace wwpcbot_v2
                 Properties.Settings.Default.BTTVEmotes = false;
                 bTTVEmotesToolStripMenuItem.Checked = false;
             }
+        }
+
+        private void getKeyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(OAuth2.GetKey());
+        }
+
+        private void joinChannelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChannelForm form = new ChannelForm();
+            form.Show();
         }
     }
 }

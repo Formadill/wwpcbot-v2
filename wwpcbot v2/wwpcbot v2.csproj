@@ -14,7 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -36,6 +36,12 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Geckofx-Core">
+      <HintPath>..\..\..\..\Documents\Geckofx-Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Geckofx-Winforms">
+      <HintPath>..\..\..\..\Documents\Geckofx-Winforms.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -56,6 +62,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\OAuth2.0\GetKeyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="API\OAuth2.0\GetKeyForm.Designer.cs">
+      <DependentUpon>GetKeyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="API\OAuth2.0\OAuth2.cs" />
     <Compile Include="API\YoutubeAPI.cs" />
     <Compile Include="Commands\CustomCommands.cs" />
     <Compile Include="Commands\CmdControl.cs" />
@@ -63,6 +76,12 @@
     <Compile Include="Commands\TwitchCap.cs" />
     <Compile Include="Commands\TwitchInfoCmds.cs" />
     <Compile Include="Commands\YoutubeFunc.cs" />
+    <Compile Include="IRC\ChannelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IRC\ChannelForm.Designer.cs">
+      <DependentUpon>ChannelForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="IRC\ConnectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +102,12 @@
     <Compile Include="Layout\TwitchEmotes.cs" />
     <Compile Include="API\GetSpeedrunInfo.cs" />
     <Compile Include="API\GetStrmInfo.cs" />
+    <EmbeddedResource Include="API\OAuth2.0\GetKeyForm.resx">
+      <DependentUpon>GetKeyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IRC\ChannelForm.resx">
+      <DependentUpon>ChannelForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IRC\ConnectForm.resx">
       <DependentUpon>ConnectForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +133,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="xulrunner\crashreporter.ini" />
+    <None Include="xulrunner\dependentlibs.list" />
+    <None Include="xulrunner\dictionaries\en-US.aff" />
+    <None Include="xulrunner\dictionaries\en-US.dic" />
+    <None Include="xulrunner\freebl3.chk" />
+    <None Include="xulrunner\gmp-fake\1.0\fake.info" />
+    <None Include="xulrunner\js-gdb.py" />
+    <None Include="xulrunner\LICENSE" />
+    <None Include="xulrunner\nssdbm3.chk" />
+    <None Include="xulrunner\omni.ja" />
+    <None Include="xulrunner\platform.ini" />
+    <None Include="xulrunner\precomplete" />
+    <None Include="xulrunner\README.xulrunner" />
+    <None Include="xulrunner\softokn3.chk" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -121,6 +160,40 @@
     <None Include="Commands\Commands - Copy.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="xulrunner\AccessibleMarshal.dll" />
+    <Content Include="xulrunner\breakpadinjector.dll" />
+    <Content Include="xulrunner\crashreporter.exe" />
+    <Content Include="xulrunner\D3DCompiler_43.dll" />
+    <Content Include="xulrunner\d3dcompiler_46.dll" />
+    <Content Include="xulrunner\freebl3.dll" />
+    <Content Include="xulrunner\gkmedias.dll" />
+    <Content Include="xulrunner\gmp-fake\1.0\fake.dll" />
+    <Content Include="xulrunner\IA2Marshal.dll" />
+    <Content Include="xulrunner\icudt52.dll" />
+    <Content Include="xulrunner\icuin52.dll" />
+    <Content Include="xulrunner\icuuc52.dll" />
+    <Content Include="xulrunner\js.exe" />
+    <Content Include="xulrunner\libEGL.dll" />
+    <Content Include="xulrunner\libGLESv2.dll" />
+    <Content Include="xulrunner\mozalloc.dll" />
+    <Content Include="xulrunner\mozglue.dll" />
+    <Content Include="xulrunner\mozjs.dll" />
+    <Content Include="xulrunner\msvcp100.dll" />
+    <Content Include="xulrunner\msvcr100.dll" />
+    <Content Include="xulrunner\nss3.dll" />
+    <Content Include="xulrunner\nssckbi.dll" />
+    <Content Include="xulrunner\nssdbm3.dll" />
+    <Content Include="xulrunner\plugin-container.exe" />
+    <Content Include="xulrunner\plugin-hang-ui.exe" />
+    <Content Include="xulrunner\redit.exe" />
+    <Content Include="xulrunner\sandboxbroker.dll" />
+    <Content Include="xulrunner\softokn3.dll" />
+    <Content Include="xulrunner\updater.exe" />
+    <Content Include="xulrunner\xul.dll" />
+    <Content Include="xulrunner\xulrunner-stub.exe" />
+    <Content Include="xulrunner\xulrunner.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

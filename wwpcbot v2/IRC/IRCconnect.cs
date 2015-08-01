@@ -30,7 +30,7 @@ namespace wwpcbot_v2.IRC
         public static TextWriter output;
         private static string __data;
         public static messageInfo MsgInfo;
-        
+        public static TcpClient mainClient = new TcpClient();
         public static string _data
         {
             get { return __data; }
@@ -47,7 +47,7 @@ namespace wwpcbot_v2.IRC
         public static void connectMain()
         {
             MainForm form = MainForm.form;
-            TcpClient mainClient = new TcpClient();
+            
             mainClient.Connect(MainIRC.IRCip, MainIRC.IRCport);
             input = new StreamReader(mainClient.GetStream());
             output = new StreamWriter(mainClient.GetStream());
@@ -64,19 +64,17 @@ namespace wwpcbot_v2.IRC
 
         public static async Task listener()
         {
+            
             MainForm form = MainForm.form;
             try
             {
                 string data;
                 while ((data = await input.ReadLineAsync()) != null)
                 {
-                    _data = data;
-                                  
+                    _data = data;                           
                     form.AddToListBox(data);                  
                     if(data.Split(' ')[1] == "001")
-                        sendData("CAP REQ :twitch.tv/commands" + "\r\n" +
-                                 "MODE " + IRCconnect.MainIRC.BotNick + " +B\r\n" +
-                                 "JOIN " + IRCconnect.MainIRC.Channel + "\r\n");
+                        sendData("CAP REQ :twitch.tv/commands" + "\r\n");
                     if (data.StartsWith("PING ")) { sendData(data.Replace("PING", "PONG") + "\r\n");}                            
                 }
             }
@@ -88,6 +86,7 @@ namespace wwpcbot_v2.IRC
 
         public static void sendData(string data)
         {
+            Console.WriteLine(mainClient.Connected);
             output.WriteAsync(data);
             output.FlushAsync();
             MainForm.form.richTextBoxInput.AppendText(data.Replace(Environment.NewLine, "") + Environment.NewLine + Environment.NewLine);
