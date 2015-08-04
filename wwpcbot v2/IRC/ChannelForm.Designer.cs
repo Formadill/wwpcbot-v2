@@ -28,57 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxChannel = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.checkBoxBot = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // label3
+            // textBox1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Channel:";
+            this.textBox1.Location = new System.Drawing.Point(144, 14);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 0;
             // 
-            // textBoxChannel
+            // label1
             // 
-            this.textBoxChannel.Location = new System.Drawing.Point(170, 18);
-            this.textBoxChannel.Name = "textBoxChannel";
-            this.textBoxChannel.Size = new System.Drawing.Size(155, 26);
-            this.textBoxChannel.TabIndex = 7;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Channel:";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(20, 100);
+            this.button1.Location = new System.Drawing.Point(15, 107);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 33);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Submit";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Join";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // checkBoxBot
+            // checkBox1
             // 
-            this.checkBoxBot.AutoSize = true;
-            this.checkBoxBot.Location = new System.Drawing.Point(20, 60);
-            this.checkBoxBot.Name = "checkBoxBot";
-            this.checkBoxBot.Size = new System.Drawing.Size(112, 24);
-            this.checkBoxBot.TabIndex = 9;
-            this.checkBoxBot.Text = "Join as bot";
-            this.checkBoxBot.UseVisualStyleBackColor = true;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(15, 50);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(77, 17);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "Join as bot";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // ChannelForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 158);
-            this.Controls.Add(this.checkBoxBot);
+            this.ClientSize = new System.Drawing.Size(256, 142);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBoxChannel);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
             this.Name = "ChannelForm";
             this.Text = "ChannelForm";
             this.ResumeLayout(false);
@@ -88,9 +88,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxChannel;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBoxBot;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
