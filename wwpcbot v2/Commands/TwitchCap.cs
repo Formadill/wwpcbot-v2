@@ -21,6 +21,7 @@ namespace wwpcbot_v2.Commands
     public struct messageInfo 
     {
         public string user;
+        public string channel;
     }
 
     class TwitchCap
@@ -75,17 +76,28 @@ namespace wwpcbot_v2.Commands
                 if (IRCconnect._data.Contains("PRIVMSG"))
                 {
                     info.user = IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!")).Substring((IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!"))).IndexOf(" :") + 2);
+                    info.channel = IRCconnect._data.Substring(0, IRCconnect._data.IndexOf(" :")).Substring(IRCconnect._data.IndexOf("#"));
                     Sender = IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!")).Substring((IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!"))).IndexOf(" :") + 2);
                 }
                 if (IRCconnect._data.Contains("CAP * ACK :twitch.tv/tags"))
                     ack = true;
             }
             else
-            {
-                CmdControl.parseTags();
-                info.user = CmdControl.info.display_name;
-                if(IRCconnect._data.Contains("PRIVMSG"))
+            {            
+                if (IRCconnect._data.Contains("PRIVMSG"))
+                {
+                    CmdControl.parseTags();
                     Sender = IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!")).Substring((IRCconnect._data.Substring(0, IRCconnect._data.IndexOf("!"))).IndexOf(" :") + 2);
+                    try
+                    {
+                        info.channel = IRCconnect._data.Substring(0, IRCconnect._data.IndexOf(IRCconnect.MainIRC.Channel[MainForm.form.tabControl1.SelectedIndex] + " :") + IRCconnect.MainIRC.Channel[MainForm.form.tabControl1.SelectedIndex].Length).Substring(IRCconnect._data.IndexOf("#"));
+                    }
+                    catch
+                    {
+                        info.channel = null;
+                    }
+                    info.user = CmdControl.info.display_name;
+                }
             }
             return info;
         }

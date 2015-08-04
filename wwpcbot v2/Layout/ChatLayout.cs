@@ -18,11 +18,11 @@ namespace wwpcbot_v2.Layout
             {
                 if (Properties.Settings.Default.TwitchLayout)
                 {
-                    output = CmdControl.info.display_name + ": " + input.Substring(input.IndexOf(IRCconnect.MainIRC.Channel + " :") + (IRCconnect.MainIRC.Channel + " :").Length);
+                    output = CmdControl.info.display_name + ": " + input.Substring(input.IndexOf(IRCconnect.MainIRC.Channel[MainForm.form.tabControl1.SelectedIndex] + " :") + (IRCconnect.MainIRC.Channel[MainForm.form.tabControl1.SelectedIndex] + " :").Length);
                 }
                 else
                 {
-                    output = IRCconnect.MsgInfo.user + ": " + input.Substring(input.IndexOf(IRCconnect.MainIRC.Channel + " :") + (IRCconnect.MainIRC.Channel + " :").Length);
+                    output = IRCconnect.MsgInfo.user + ": " + input.Substring(input.IndexOf(IRCconnect.MainIRC.Channel[MainForm.form.tabControl1.SelectedIndex] + " :") + (IRCconnect.MainIRC.Channel[MainForm.form.tabControl1.SelectedIndex] + " :").Length);
                 }
             }
             return output;
@@ -35,14 +35,14 @@ namespace wwpcbot_v2.Layout
             {
                 
                 Color color = ColorTranslator.FromHtml(CmdControl.info.color);
-                int totalLines = form.richTextBoxInput.Lines.Length;
-                string lastLine = form.richTextBoxInput.Lines[totalLines - 3];
-                string lasterLine = form.richTextBoxInput.Lines[totalLines - 2];
-                int start = form.richTextBoxInput.Text.IndexOf(lastLine);
-                form.richTextBoxInput.Select(start, CmdControl.info.display_name.Length);
-                form.richTextBoxInput.SelectionColor = color;
-                form.richTextBoxInput.SelectionFont = new Font(form.richTextBoxInput.Font, FontStyle.Bold);
-                form.richTextBoxInput.Select(form.richTextBoxInput.Text.LastIndexOf(lasterLine), 0);               
+                int totalLines = form.chats[MainForm.form.tabControl1.SelectedIndex].richTextBoxInput.Lines.Length;
+                string lastLine = form.chats[MainForm.form.tabControl1.SelectedIndex].richTextBoxInput.Lines[totalLines - 3];
+                string lasterLine = form.chats[MainForm.form.tabControl1.SelectedIndex].richTextBoxInput.Lines[totalLines - 2];
+                int start = form.chats[MainForm.form.tabControl1.SelectedIndex].richTextBoxInput.Text.IndexOf(lastLine);
+                form.chats[MainForm.form.tabControl1.SelectedIndex].richTextBoxInput.Select(start, CmdControl.info.display_name.Length);
+                form.chats[MainForm.form.tabControl1.SelectedIndex].richTextBoxInput.SelectionColor = color;
+                form.chats[MainForm.form.tabControl1.SelectedIndex].richTextBoxInput.SelectionFont = new Font(form.chats[MainForm.form.tabControl1.SelectedIndex].richTextBoxInput.Font, FontStyle.Bold);
+                form.chats[MainForm.form.tabControl1.SelectedIndex].richTextBoxInput.Select(form.chats[MainForm.form.tabControl1.SelectedIndex].richTextBoxInput.Text.LastIndexOf(lasterLine), 0);               
             }
             if (Properties.Settings.Default.TwitchEmotes == true && CmdControl.info.emote_sets.Contains(':'))
             {

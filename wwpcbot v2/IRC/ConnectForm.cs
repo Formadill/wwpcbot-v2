@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using wwpcbot_v2;
 using wwpcbot_v2.API.OAuth2;
+using wwpcbot_v2.Layout;
 
 namespace wwpcbot_v2.IRC
 {
@@ -58,8 +59,12 @@ namespace wwpcbot_v2.IRC
             formOutputs.IRCport = Convert.ToInt32(textBoxPort.Text);
             formOutputs.Channel = null;
             formOutputs.OAuthKey = OAuth2.GetKey();
+            formOutputs.ServerName = textBoxName.Text;
             IRCconnect.MainIRC = formOutputs;
-            IRCconnect.connectMain();
+            MainForm.form.joinChannelToolStripMenuItem.Enabled = true;
+            
+
+            IRCconnect.connectMain();                        
             IRCconnect.listener();
             this.Close();
         }

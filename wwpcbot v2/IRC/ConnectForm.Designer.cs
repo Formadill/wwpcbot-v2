@@ -37,53 +37,50 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxNick = new System.Windows.Forms.TextBox();
             this.textBoxOwner = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxIP
             // 
-            this.textBoxIP.Location = new System.Drawing.Point(198, 14);
-            this.textBoxIP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxIP.Location = new System.Drawing.Point(132, 9);
             this.textBoxIP.Name = "textBoxIP";
-            this.textBoxIP.Size = new System.Drawing.Size(148, 26);
-            this.textBoxIP.TabIndex = 2;
+            this.textBoxIP.Size = new System.Drawing.Size(100, 20);
+            this.textBoxIP.TabIndex = 0;
             this.textBoxIP.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBoxPort
             // 
-            this.textBoxPort.Location = new System.Drawing.Point(198, 50);
-            this.textBoxPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxPort.Location = new System.Drawing.Point(132, 32);
             this.textBoxPort.Name = "textBoxPort";
-            this.textBoxPort.Size = new System.Drawing.Size(148, 26);
-            this.textBoxPort.TabIndex = 3;
+            this.textBoxPort.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPort.TabIndex = 1;
             this.textBoxPort.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // labelIP
             // 
             this.labelIP.AutoSize = true;
-            this.labelIP.Location = new System.Drawing.Point(18, 17);
-            this.labelIP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelIP.Location = new System.Drawing.Point(12, 11);
             this.labelIP.Name = "labelIP";
-            this.labelIP.Size = new System.Drawing.Size(28, 20);
+            this.labelIP.Size = new System.Drawing.Size(20, 13);
             this.labelIP.TabIndex = 8;
             this.labelIP.Text = "IP:";
             // 
             // labelPort
             // 
             this.labelPort.AutoSize = true;
-            this.labelPort.Location = new System.Drawing.Point(18, 53);
-            this.labelPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPort.Location = new System.Drawing.Point(12, 34);
             this.labelPort.Name = "labelPort";
-            this.labelPort.Size = new System.Drawing.Size(42, 20);
+            this.labelPort.Size = new System.Drawing.Size(29, 13);
             this.labelPort.TabIndex = 9;
             this.labelPort.Text = "Port:";
             // 
             // buttonSubmit
             // 
-            this.buttonSubmit.Location = new System.Drawing.Point(22, 171);
-            this.buttonSubmit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonSubmit.Location = new System.Drawing.Point(12, 130);
             this.buttonSubmit.Name = "buttonSubmit";
-            this.buttonSubmit.Size = new System.Drawing.Size(112, 35);
-            this.buttonSubmit.TabIndex = 13;
+            this.buttonSubmit.Size = new System.Drawing.Size(75, 23);
+            this.buttonSubmit.TabIndex = 5;
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
@@ -91,44 +88,58 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 89);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 81);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 20);
+            this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 14;
             this.label1.Text = "User:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 124);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(12, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 20);
+            this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 15;
             this.label2.Text = "Owner:";
             // 
             // textBoxNick
             // 
-            this.textBoxNick.Location = new System.Drawing.Point(198, 86);
-            this.textBoxNick.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxNick.Location = new System.Drawing.Point(132, 78);
             this.textBoxNick.Name = "textBoxNick";
-            this.textBoxNick.Size = new System.Drawing.Size(148, 26);
-            this.textBoxNick.TabIndex = 16;
+            this.textBoxNick.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNick.TabIndex = 3;
             // 
             // textBoxOwner
             // 
-            this.textBoxOwner.Location = new System.Drawing.Point(198, 121);
-            this.textBoxOwner.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxOwner.Location = new System.Drawing.Point(132, 101);
             this.textBoxOwner.Name = "textBoxOwner";
-            this.textBoxOwner.Size = new System.Drawing.Size(148, 26);
-            this.textBoxOwner.TabIndex = 19;
+            this.textBoxOwner.Size = new System.Drawing.Size(100, 20);
+            this.textBoxOwner.TabIndex = 4;
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(132, 55);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxName.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Name of the server:";
             // 
             // ConnectForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 254);
+            this.ClientSize = new System.Drawing.Size(284, 165);
+            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxOwner);
             this.Controls.Add(this.textBoxNick);
             this.Controls.Add(this.label2);
@@ -138,7 +149,6 @@
             this.Controls.Add(this.labelIP);
             this.Controls.Add(this.textBoxPort);
             this.Controls.Add(this.textBoxIP);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ConnectForm";
             this.Text = "ConnectForm";
             this.ResumeLayout(false);
@@ -157,5 +167,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxNick;
         private System.Windows.Forms.TextBox textBoxOwner;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -20,55 +20,61 @@ namespace wwpcbot_v2
 {
     public partial class MainForm : Form
     {
+        public List<Chat> chats = new List<Chat>();
+        public List<TabPage> tabs = new List<TabPage>();
         public static MainForm form;
         public MainForm()
         {
-            
             InitializeComponent();
             form = this;
         }
 
         public void AddToListBox(string addString)
         {
-            addString = ChatLayout.removeIRCtext(addString);
-            richTextBoxInput.AppendText(addString + Environment.NewLine + Environment.NewLine);
-            Task.Factory.StartNew(ChatLayout.addToChatLayout, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
+            if (IRCconnect.MainIRC.Channel[tabControl1.SelectedIndex] == IRCconnect.MsgInfo.channel)
+            {
+                Console.WriteLine(tabControl1.SelectedIndex);
+                addString = ChatLayout.removeIRCtext(addString);
+                chats[tabControl1.SelectedIndex].richTextBoxInput.AppendText(addString + Environment.NewLine + Environment.NewLine);
+                Task.Factory.StartNew(ChatLayout.addToChatLayout, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
+            }
         }
 
         public void TextToImg(string text, Image img)
         {
             int index;
-            while (richTextBoxInput.Text.Contains(text))
+            while (chats[tabControl1.SelectedIndex].richTextBoxInput.Text.Contains(text))
             {
-                if ((index = richTextBoxInput.Find(text)) > -1)
+                if ((index = chats[tabControl1.SelectedIndex].richTextBoxInput.Find(text)) > -1)
                 {
-                    richTextBoxInput.Select(index, text.Length);
+                    chats[tabControl1.SelectedIndex].richTextBoxInput.Select(index, text.Length);
                     Clipboard.SetImage(img);
-                    richTextBoxInput.Paste();
+                    chats[tabControl1.SelectedIndex].richTextBoxInput.Paste();
                 }
             }
         }
 
         private void textBoxSendPrivMsg_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
-            {
-                IRCconnect.sendPrivMsg(textBoxSendPrivMsg.Text);
-                textBoxSendPrivMsg.Text = "";
-            }
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Color color = System.Drawing.ColorTranslator.FromHtml("#D3D3D3");
-            richTextBoxInput.BackColor = color;
+            /*
+            chats.Add(new Chat());
+            chats[0].Dock = DockStyle.Fill;
+            tabs.Add(new TabPage());
+            tabs[0].Controls.Add(chats[0]);
+            tabControl1.TabPages.Add(tabs[0]);
+            */
         }
 
         public string GetTextFromPos(int start, int end)
         {
             string text = null;
-            int totalLines = richTextBoxInput.Lines.Length;
-            string lastLine = richTextBoxInput.Lines[totalLines - 3];
+            int totalLines = chats[tabControl1.SelectedIndex].richTextBoxInput.Lines.Length;
+            string lastLine = chats[tabControl1.SelectedIndex].richTextBoxInput.Lines[totalLines - 3];
             lastLine = lastLine.Substring(lastLine.IndexOf(IRCconnect.MsgInfo.user + ": ") + (IRCconnect.MsgInfo.user + ": ").Length);
             text = lastLine.Substring(0, end + 1).Substring(start);
             return text;

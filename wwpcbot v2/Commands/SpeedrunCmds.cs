@@ -16,12 +16,12 @@ namespace wwpcbot_v2.Commands
                 WRCmd();
         }
 
-        private static void WRCmd()
+        private static async void WRCmd()
         {
-            var tuple = GetSpeedrunInfo.GetWR(GetStrmInfo.GetGame(IRCconnect.MainIRC.Channel.Remove(0, 1)));
+            var tuple = await GetSpeedrunInfo.GetWR(await GetStrmInfo.GetGame(IRCconnect.MainIRC.Channel[MainForm.form.tabControl1.SelectedIndex].Remove(0, 1)));
             PlayerInfo info = tuple.Item2;
             string wr = tuple.Item1;
-            IRCconnect.sendPrivMsg("The world record for " + GetStrmInfo.GetGame(IRCconnect.MainIRC.Channel.Remove(0, 1)) + " is " + wr  + " by " + info.playerName + " (" + info.playerStream + ")");
+            IRCconnect.sendPrivMsg("The world record for " + GetStrmInfo.GetGame(IRCconnect.MainIRC.Channel[MainForm.form.tabControl1.SelectedIndex].Remove(0, 1)) + " is " + wr + " by " + info.playerName + " (" + info.playerStream + ")");
         }
     }
 }

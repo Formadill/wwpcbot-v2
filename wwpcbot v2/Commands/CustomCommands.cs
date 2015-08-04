@@ -20,7 +20,7 @@ namespace wwpcbot_v2.Commands
             {
                 if (TwitchCap.ack)
                 {
-                    if (CmdControl.info.user_type == "mod" || TwitchCap.Sender == IRCconnect.MainIRC.Channel.Remove(0, 1) || TwitchCap.Sender == IRCconnect.MainIRC.BotOwner)
+                    if (CmdControl.info.user_type == "mod" || TwitchCap.Sender == IRCconnect.MainIRC.Channel[MainForm.form.tabControl1.SelectedIndex].Remove(0, 1) || TwitchCap.Sender == IRCconnect.MainIRC.BotOwner)
                     {
                         cmdAdd(command);
                     }
@@ -91,7 +91,7 @@ namespace wwpcbot_v2.Commands
             return response;
         }
 
-        private static void cmdFuncs(string _funcs)
+        private static async void cmdFuncs(string _funcs)
         {
             string _func = _funcs.Substring(_funcs.IndexOf(' '));
             string[] funcs = _func.Replace("-", "").Split(' ');
@@ -99,16 +99,23 @@ namespace wwpcbot_v2.Commands
             {
                 if (func == "m" && TwitchCap.ack)
                 {
-                    if (!(CmdControl.info.user_type == "mod" || TwitchCap.Sender == IRCconnect.MainIRC.Channel.Remove(0, 1) || TwitchCap.Sender == IRCconnect.MainIRC.BotOwner))
+                    if (!(CmdControl.info.user_type == "mod" || TwitchCap.Sender == IRCconnect.MainIRC.Channel[MainForm.form.tabControl1.SelectedIndex].Remove(0, 1) || TwitchCap.Sender == IRCconnect.MainIRC.BotOwner))
                         allow = false;
                 }
                 else if (func.StartsWith("g"))
                 {
                     string _id = func.Substring(func.IndexOf("g") + 1);
-                    string game = GetStrmInfo.GetGame(IRCconnect.MainIRC.Channel.Remove(0, 1));
-                    string id = GetSpeedrunInfo.GetGameID(game);
-                    if (_id != id)
-                        allow = false;
+                    try
+                    {
+                        string game = await GetStrmInfo.GetGame(IRCconnect.MainIRC.Channel[MainForm.form.tabControl1.SelectedIndex].Remove(0, 1));
+                        string id = await GetSpeedrunInfo.GetGameID(game);
+                        if (_id != id)
+                            allow = false;
+                    }
+                    catch
+                    {
+
+                    }
                 }
             }
         }

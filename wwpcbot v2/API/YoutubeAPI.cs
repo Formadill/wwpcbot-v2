@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using RestSharp;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Threading;
 
 namespace wwpcbot_v2.API
 {
@@ -19,7 +20,7 @@ namespace wwpcbot_v2.API
     }
     class YoutubeAPI
     {
-        public static videoInfo GetVideoInfo(string id)
+        public static async Task<videoInfo> GetVideoInfo(string id)
         {
             videoInfo info = new videoInfo();
             var client = new RestClient("https://www.googleapis.com/youtube/v3/");
@@ -27,7 +28,8 @@ namespace wwpcbot_v2.API
             request.AddParameter("id", id, ParameterType.UrlSegment);
             request.AddParameter("part", "snippet,statistics");
             request.AddParameter("key", Properties.Settings.Default.YoutubeAPIkey);
-            var obj = client.Execute(request);
+            var cancellationTokenSource = new CancellationTokenSource();
+            var obj = await client.ExecuteTaskAsync(request, cancellationTokenSource.Token);
             var pObj = JToken.Parse(obj.Content);
             info.title = (string)pObj["items"][0]["snippet"]["title"];
             info.creator = (string)pObj["items"][0]["snippet"]["channelTitle"];

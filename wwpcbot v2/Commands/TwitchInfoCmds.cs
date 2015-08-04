@@ -21,7 +21,7 @@ namespace wwpcbot_v2.Commands
             string url = "https://decapi.me/twitch/";
             var client = new RestClient(url);
             var request = new RestRequest("uptime.php?channel={channel}", Method.GET);
-            request.AddParameter("channel", IRCconnect.MainIRC.Channel.Remove(0, 1), ParameterType.UrlSegment);
+            request.AddParameter("channel", IRCconnect.MainIRC.Channel[MainForm.form.tabControl1.SelectedIndex].Remove(0, 1), ParameterType.UrlSegment);
             var result = client.Execute(request);
             if (result.Content != "Channel is not live.")
                 IRCconnect.sendPrivMsg("This channel has been live for " + result.Content + ".");

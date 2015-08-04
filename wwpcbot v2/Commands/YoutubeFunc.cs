@@ -17,7 +17,7 @@ namespace wwpcbot_v2.Commands
 
         }
 
-        private static void giveVideoInfo(string message)
+        private static async void giveVideoInfo(string message)
         {
             
             try
@@ -32,7 +32,7 @@ namespace wwpcbot_v2.Commands
                 {
                     id = _id;
                 }
-                videoInfo info = YoutubeAPI.GetVideoInfo(id);
+                videoInfo info = await YoutubeAPI.GetVideoInfo(id);
                 IRCconnect.sendPrivMsg("Title: " + info.title + ", Uploader: " + info.creator + ", Views: " + info.views + ", Likes: +" + info.likes + "/-" + info.dislikes + ".");
             }
             catch

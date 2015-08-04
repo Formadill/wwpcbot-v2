@@ -90,6 +90,12 @@
     <Compile Include="IRC\ConnectForm.Designer.cs">
       <DependentUpon>ConnectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layout\Chat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Layout\Chat.Designer.cs">
+      <DependentUpon>Chat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layout\ChatLayout.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -112,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IRC\ConnectForm.resx">
       <DependentUpon>ConnectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layout\Chat.resx">
+      <DependentUpon>Chat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

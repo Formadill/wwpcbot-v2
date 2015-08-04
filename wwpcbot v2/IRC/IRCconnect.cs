@@ -14,16 +14,18 @@ namespace wwpcbot_v2.IRC
 {
     struct IRCconnectInfo
     {
+        public string ServerName;
         public string IRCip;
         public int IRCport;
         public string BotNick;
         public string BotOwner;
         public string OAuthKey;
-        public string Channel;
+        public List<string> Channel;
     }
 
     class IRCconnect
-    {        
+    {
+        
         public static bool ConnectToGroup;
         public static IRCconnectInfo MainIRC;
         public static TextReader input;
@@ -59,23 +61,27 @@ namespace wwpcbot_v2.IRC
 
         public static void sendPrivMsg(string msg)
         {
-            sendData("PRIVMSG " + MainIRC.Channel + " :" + msg + "\r\n");
+            sendData("PRIVMSG " + MainIRC.Channel[MainForm.form.tabControl1.SelectedIndex] + " :" + msg + "\r\n");
         }
 
         public static async Task listener()
-        {
-            
+        {            
             MainForm form = MainForm.form;
             try
             {
                 string data;
                 while ((data = await input.ReadLineAsync()) != null)
                 {
-                    _data = data;                           
-                    form.AddToListBox(data);                  
-                    if(data.Split(' ')[1] == "001")
+                    _data = data;
+                    try
+                    {
+                        form.AddToListBox(data);
+                    }
+                    catch { }
+                    if(data.Split(' ')[1] == "001" && MainIRC.IRCip == "irc.twitch.tv")
                         sendData("CAP REQ :twitch.tv/commands" + "\r\n");
-                    if (data.StartsWith("PING ")) { sendData(data.Replace("PING", "PONG") + "\r\n");}                            
+                    if (data.StartsWith("PING "))
+                        sendData(data.Replace("PING", "PONG") + "\r\n");                   
                 }
             }
             catch
@@ -89,7 +95,11 @@ namespace wwpcbot_v2.IRC
             Console.WriteLine(mainClient.Connected);
             output.WriteAsync(data);
             output.FlushAsync();
-            MainForm.form.richTextBoxInput.AppendText(data.Replace(Environment.NewLine, "") + Environment.NewLine + Environment.NewLine);
+            try
+            {
+                MainForm.form.chats[MainForm.form.tabControl1.SelectedIndex].richTextBoxInput.AppendText(data.Replace(Environment.NewLine, "") + Environment.NewLine + Environment.NewLine);
+            }
+            catch { }
         }
 
         public static void connectGroup()

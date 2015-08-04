@@ -56,19 +56,19 @@ namespace wwpcbot_v2
             }
         }
 
-        public static void bttvEmotes()
+        public static async void bttvEmotes()
         {
             MainForm form = MainForm.form;
             var client = new RestClient("https://cdn.betterttv.net/");
             var request = new RestRequest("emotes/emotes.json", Method.GET);
-            var obj = client.Execute(request);
+            var obj = await client.ExecuteTaskAsync(request);
             try
             {
                 var paObj = JArray.Parse(obj.Content);
 
                 foreach (JObject j in paObj)
                 {
-                    if (form.richTextBoxInput.Text.Contains((string)j["regex"]))
+                    if (form.chats[MainForm.form.tabControl1.SelectedIndex].richTextBoxInput.Text.Contains((string)j["regex"]))
                     {
                         var request2 = WebRequest.Create("https:" + (string)j["url"]);
                         using (var response = request2.GetResponse())

@@ -29,47 +29,22 @@ namespace wwpcbot_v2
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxSendPrivMsg = new System.Windows.Forms.TextBox();
-            this.richTextBoxInput = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemConnect = new System.Windows.Forms.ToolStripMenuItem();
+            this.joinChannelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemBot = new System.Windows.Forms.ToolStripMenuItem();
             this.customCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.speedrunCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitchStreamInfoCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemTwitch = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemLayout = new System.Windows.Forms.ToolStripMenuItem();
+            this.twitchLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitchChatLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitchEmotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bTTVEmotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.getKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.joinChannelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // textBoxSendPrivMsg
-            // 
-            this.textBoxSendPrivMsg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSendPrivMsg.Location = new System.Drawing.Point(18, 769);
-            this.textBoxSendPrivMsg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBoxSendPrivMsg.Name = "textBoxSendPrivMsg";
-            this.textBoxSendPrivMsg.Size = new System.Drawing.Size(1135, 26);
-            this.textBoxSendPrivMsg.TabIndex = 2;
-            this.textBoxSendPrivMsg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSendPrivMsg_KeyDown);
-            // 
-            // richTextBoxInput
-            // 
-            this.richTextBoxInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxInput.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxInput.Location = new System.Drawing.Point(18, 51);
-            this.richTextBoxInput.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.richTextBoxInput.Name = "richTextBoxInput";
-            this.richTextBoxInput.Size = new System.Drawing.Size(1135, 712);
-            this.richTextBoxInput.TabIndex = 4;
-            this.richTextBoxInput.Text = "";
             // 
             // menuStrip1
             // 
@@ -79,8 +54,7 @@ namespace wwpcbot_v2
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1173, 35);
+            this.menuStrip1.Size = new System.Drawing.Size(782, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -90,18 +64,25 @@ namespace wwpcbot_v2
             this.ToolStripMenuItemConnect,
             this.joinChannelToolStripMenuItem,
             this.ToolStripMenuItemBot,
-            this.ToolStripMenuItemTwitch,
-            this.getKeyToolStripMenuItem});
+            this.ToolStripMenuItemLayout});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(88, 29);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
             // ToolStripMenuItemConnect
             // 
             this.ToolStripMenuItemConnect.Name = "ToolStripMenuItemConnect";
-            this.ToolStripMenuItemConnect.Size = new System.Drawing.Size(236, 30);
+            this.ToolStripMenuItemConnect.Size = new System.Drawing.Size(167, 22);
             this.ToolStripMenuItemConnect.Text = "Connect to server";
             this.ToolStripMenuItemConnect.Click += new System.EventHandler(this.ToolStripMenuItemConnect_Click);
+            // 
+            // joinChannelToolStripMenuItem
+            // 
+            this.joinChannelToolStripMenuItem.Enabled = false;
+            this.joinChannelToolStripMenuItem.Name = "joinChannelToolStripMenuItem";
+            this.joinChannelToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.joinChannelToolStripMenuItem.Text = "Join Channel";
+            this.joinChannelToolStripMenuItem.Click += new System.EventHandler(this.joinChannelToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemBot
             // 
@@ -109,87 +90,90 @@ namespace wwpcbot_v2
             this.customCommandsToolStripMenuItem,
             this.speedrunCommandsToolStripMenuItem,
             this.twitchStreamInfoCommandsToolStripMenuItem});
+            this.ToolStripMenuItemBot.Enabled = false;
             this.ToolStripMenuItemBot.Name = "ToolStripMenuItemBot";
-            this.ToolStripMenuItemBot.Size = new System.Drawing.Size(226, 30);
+            this.ToolStripMenuItemBot.Size = new System.Drawing.Size(167, 22);
             this.ToolStripMenuItemBot.Text = "Bot functionality";
             this.ToolStripMenuItemBot.Click += new System.EventHandler(this.ToolStripMenuItemBot_Click);
             // 
             // customCommandsToolStripMenuItem
             // 
             this.customCommandsToolStripMenuItem.Name = "customCommandsToolStripMenuItem";
-            this.customCommandsToolStripMenuItem.Size = new System.Drawing.Size(335, 30);
+            this.customCommandsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.customCommandsToolStripMenuItem.Text = "Custom commands";
             this.customCommandsToolStripMenuItem.Click += new System.EventHandler(this.customCommandsToolStripMenuItem_Click);
             // 
             // speedrunCommandsToolStripMenuItem
             // 
             this.speedrunCommandsToolStripMenuItem.Name = "speedrunCommandsToolStripMenuItem";
-            this.speedrunCommandsToolStripMenuItem.Size = new System.Drawing.Size(335, 30);
+            this.speedrunCommandsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.speedrunCommandsToolStripMenuItem.Text = "Speedrun commands";
             this.speedrunCommandsToolStripMenuItem.Click += new System.EventHandler(this.speedrunCommandsToolStripMenuItem_Click);
             // 
             // twitchStreamInfoCommandsToolStripMenuItem
             // 
             this.twitchStreamInfoCommandsToolStripMenuItem.Name = "twitchStreamInfoCommandsToolStripMenuItem";
-            this.twitchStreamInfoCommandsToolStripMenuItem.Size = new System.Drawing.Size(335, 30);
+            this.twitchStreamInfoCommandsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.twitchStreamInfoCommandsToolStripMenuItem.Text = "Twitch stream info commands";
             this.twitchStreamInfoCommandsToolStripMenuItem.Click += new System.EventHandler(this.twitchStreamInfoCommandsToolStripMenuItem_Click);
             // 
-            // ToolStripMenuItemTwitch
+            // ToolStripMenuItemLayout
             // 
-            this.ToolStripMenuItemTwitch.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemLayout.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.twitchLayoutToolStripMenuItem});
+            this.ToolStripMenuItemLayout.Enabled = false;
+            this.ToolStripMenuItemLayout.Name = "ToolStripMenuItemLayout";
+            this.ToolStripMenuItemLayout.Size = new System.Drawing.Size(167, 22);
+            this.ToolStripMenuItemLayout.Text = "Layout";
+            // 
+            // twitchLayoutToolStripMenuItem
+            // 
+            this.twitchLayoutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.twitchChatLayoutToolStripMenuItem,
             this.twitchEmotesToolStripMenuItem,
             this.bTTVEmotesToolStripMenuItem});
-            this.ToolStripMenuItemTwitch.Name = "ToolStripMenuItemTwitch";
-            this.ToolStripMenuItemTwitch.Size = new System.Drawing.Size(226, 30);
-            this.ToolStripMenuItemTwitch.Text = "Layout";
+            this.twitchLayoutToolStripMenuItem.Enabled = false;
+            this.twitchLayoutToolStripMenuItem.Name = "twitchLayoutToolStripMenuItem";
+            this.twitchLayoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.twitchLayoutToolStripMenuItem.Text = "Twitch layout";
             // 
             // twitchChatLayoutToolStripMenuItem
             // 
             this.twitchChatLayoutToolStripMenuItem.Name = "twitchChatLayoutToolStripMenuItem";
-            this.twitchChatLayoutToolStripMenuItem.Size = new System.Drawing.Size(238, 30);
+            this.twitchChatLayoutToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.twitchChatLayoutToolStripMenuItem.Text = "Twitch chat layout";
             this.twitchChatLayoutToolStripMenuItem.Click += new System.EventHandler(this.twitchChatLayoutToolStripMenuItem_Click);
             // 
             // twitchEmotesToolStripMenuItem
             // 
             this.twitchEmotesToolStripMenuItem.Name = "twitchEmotesToolStripMenuItem";
-            this.twitchEmotesToolStripMenuItem.Size = new System.Drawing.Size(238, 30);
+            this.twitchEmotesToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.twitchEmotesToolStripMenuItem.Text = "Twitch emotes";
             this.twitchEmotesToolStripMenuItem.Click += new System.EventHandler(this.twitchEmotesToolStripMenuItem_Click);
             // 
             // bTTVEmotesToolStripMenuItem
             // 
             this.bTTVEmotesToolStripMenuItem.Name = "bTTVEmotesToolStripMenuItem";
-            this.bTTVEmotesToolStripMenuItem.Size = new System.Drawing.Size(238, 30);
+            this.bTTVEmotesToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.bTTVEmotesToolStripMenuItem.Text = "BTTV emotes";
             this.bTTVEmotesToolStripMenuItem.Click += new System.EventHandler(this.bTTVEmotesToolStripMenuItem_Click);
             // 
-            // getKeyToolStripMenuItem
+            // tabControl1
             // 
-            this.getKeyToolStripMenuItem.Name = "getKeyToolStripMenuItem";
-            this.getKeyToolStripMenuItem.Size = new System.Drawing.Size(226, 30);
-            this.getKeyToolStripMenuItem.Text = "GetKey";
-            this.getKeyToolStripMenuItem.Click += new System.EventHandler(this.getKeyToolStripMenuItem_Click);
-            // 
-            // joinChannelToolStripMenuItem
-            // 
-            this.joinChannelToolStripMenuItem.Name = "joinChannelToolStripMenuItem";
-            this.joinChannelToolStripMenuItem.Size = new System.Drawing.Size(236, 30);
-            this.joinChannelToolStripMenuItem.Text = "Join Channel";
-            this.joinChannelToolStripMenuItem.Click += new System.EventHandler(this.joinChannelToolStripMenuItem_Click);
+            this.tabControl1.Location = new System.Drawing.Point(12, 27);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(758, 530);
+            this.tabControl1.TabIndex = 6;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1173, 832);
-            this.Controls.Add(this.richTextBoxInput);
-            this.Controls.Add(this.textBoxSendPrivMsg);
+            this.ClientSize = new System.Drawing.Size(782, 569);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainForm";
             this.Text = "wwpcbot";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -202,21 +186,20 @@ namespace wwpcbot_v2
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBoxSendPrivMsg;
-        public System.Windows.Forms.RichTextBox richTextBoxInput;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemConnect;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemBot;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemTwitch;
-        private System.Windows.Forms.ToolStripMenuItem twitchChatLayoutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem twitchEmotesToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemBot;
+        public System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemLayout;
         private ToolStripMenuItem customCommandsToolStripMenuItem;
         private ToolStripMenuItem speedrunCommandsToolStripMenuItem;
         private ToolStripMenuItem twitchStreamInfoCommandsToolStripMenuItem;
+        public ToolStripMenuItem joinChannelToolStripMenuItem;
+        public TabControl tabControl1;
+        public ToolStripMenuItem twitchLayoutToolStripMenuItem;
+        private ToolStripMenuItem twitchChatLayoutToolStripMenuItem;
+        private ToolStripMenuItem twitchEmotesToolStripMenuItem;
         private ToolStripMenuItem bTTVEmotesToolStripMenuItem;
-        private ToolStripMenuItem getKeyToolStripMenuItem;
-        private ToolStripMenuItem joinChannelToolStripMenuItem;
     }
 }
 
