@@ -26,5 +26,8 @@
     <Setting Name="YoutubeAPIkey" Type="System.String" Scope="User">
       <Value Profile="(Default)">AIzaSyAhXSAtf28BGXx2uOw2NFHYWpHE7F1cRKg</Value>
     </Setting>
+    <Setting Name="YoutubeLinkInfo" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -192,5 +192,19 @@ namespace wwpcbot_v2
             ChannelForm form = new ChannelForm();
             form.Show();
         }
+
+        private void giveYoutubeLinkInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!giveYoutubeLinkInfoToolStripMenuItem.Checked)
+            {
+                Properties.Settings.Default.YoutubeLinkInfo = true;
+                giveYoutubeLinkInfoToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                Properties.Settings.Default.YoutubeLinkInfo = false;
+                giveYoutubeLinkInfoToolStripMenuItem.Checked = false;
+            }
+        }
     }
 }

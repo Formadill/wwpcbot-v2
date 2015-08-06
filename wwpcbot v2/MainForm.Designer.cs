@@ -37,6 +37,7 @@ namespace wwpcbot_v2
             this.customCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.speedrunCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitchStreamInfoCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.giveYoutubeLinkInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.twitchLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twitchChatLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,7 +90,8 @@ namespace wwpcbot_v2
             this.ToolStripMenuItemBot.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customCommandsToolStripMenuItem,
             this.speedrunCommandsToolStripMenuItem,
-            this.twitchStreamInfoCommandsToolStripMenuItem});
+            this.twitchStreamInfoCommandsToolStripMenuItem,
+            this.giveYoutubeLinkInfoToolStripMenuItem});
             this.ToolStripMenuItemBot.Enabled = false;
             this.ToolStripMenuItemBot.Name = "ToolStripMenuItemBot";
             this.ToolStripMenuItemBot.Size = new System.Drawing.Size(167, 22);
@@ -117,6 +119,13 @@ namespace wwpcbot_v2
             this.twitchStreamInfoCommandsToolStripMenuItem.Text = "Twitch stream info commands";
             this.twitchStreamInfoCommandsToolStripMenuItem.Click += new System.EventHandler(this.twitchStreamInfoCommandsToolStripMenuItem_Click);
             // 
+            // giveYoutubeLinkInfoToolStripMenuItem
+            // 
+            this.giveYoutubeLinkInfoToolStripMenuItem.Name = "giveYoutubeLinkInfoToolStripMenuItem";
+            this.giveYoutubeLinkInfoToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.giveYoutubeLinkInfoToolStripMenuItem.Text = "Give youtube link info";
+            this.giveYoutubeLinkInfoToolStripMenuItem.Click += new System.EventHandler(this.giveYoutubeLinkInfoToolStripMenuItem_Click);
+            // 
             // ToolStripMenuItemLayout
             // 
             this.ToolStripMenuItemLayout.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -134,7 +143,7 @@ namespace wwpcbot_v2
             this.bTTVEmotesToolStripMenuItem});
             this.twitchLayoutToolStripMenuItem.Enabled = false;
             this.twitchLayoutToolStripMenuItem.Name = "twitchLayoutToolStripMenuItem";
-            this.twitchLayoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.twitchLayoutToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.twitchLayoutToolStripMenuItem.Text = "Twitch layout";
             // 
             // twitchChatLayoutToolStripMenuItem
@@ -200,6 +209,7 @@ namespace wwpcbot_v2
         private ToolStripMenuItem twitchChatLayoutToolStripMenuItem;
         private ToolStripMenuItem twitchEmotesToolStripMenuItem;
         private ToolStripMenuItem bTTVEmotesToolStripMenuItem;
+        private ToolStripMenuItem giveYoutubeLinkInfoToolStripMenuItem;
     }
 }
 

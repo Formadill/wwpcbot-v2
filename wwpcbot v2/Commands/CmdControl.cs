@@ -19,7 +19,8 @@ namespace wwpcbot_v2.Commands
         {
             string _data = IRCconnect._data.Remove(0,1);
             string data = _data.Substring(_data.IndexOf(IRCconnect.MainIRC.Channel + " :") + (IRCconnect.MainIRC.Channel + " :").Length);
-            YoutubeFunc.mainControl(data);
+            if (Properties.Settings.Default.YoutubeLinkInfo)
+                YoutubeFunc.mainControl(data);
             if (data.StartsWith("!"))
             {
                 if (Properties.Settings.Default.CustomCmds)
