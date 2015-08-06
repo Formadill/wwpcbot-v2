@@ -13,16 +13,18 @@ namespace wwpcbot_v2.Commands
         public static void mainControl(string message)
         {
             if (message.Contains("www.youtube.com/watch?v="))
-                giveVideoInfo(message);
+                giveVideoInfo(message, "www.youtube.com/watch?v=");
+            else if(message.Contains("https://youtu.be/"))
+                giveVideoInfo(message, "https://youtu.be/");
 
         }
 
-        private static async void giveVideoInfo(string message)
+        private static async void giveVideoInfo(string message, string link)
         {
             
             try
             {
-                string _id = message.Substring(message.IndexOf("www.youtube.com/watch?v=") + ("www.youtube.com/watch?v=").Length);
+                string _id = message.Substring(message.IndexOf(link) + (link).Length);
                 string id;
                 try
                 {
