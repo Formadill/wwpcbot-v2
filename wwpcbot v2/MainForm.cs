@@ -33,7 +33,6 @@ namespace wwpcbot_v2
         {
             if (IRCconnect.MainIRC.Channel[tabControl1.SelectedIndex] == IRCconnect.MsgInfo.channel)
             {
-                Console.WriteLine(tabControl1.SelectedIndex);
                 addString = ChatLayout.removeIRCtext(addString);
                 chats[tabControl1.SelectedIndex].richTextBoxInput.AppendText(addString + Environment.NewLine + Environment.NewLine);
                 Task.Factory.StartNew(ChatLayout.addToChatLayout, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
@@ -184,7 +183,6 @@ namespace wwpcbot_v2
 
         private void getKeyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(OAuth2.GetKey());
         }
 
         private void joinChannelToolStripMenuItem_Click(object sender, EventArgs e)

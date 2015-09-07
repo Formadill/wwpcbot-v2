@@ -18,7 +18,7 @@ namespace wwpcbot_v2.Commands
         public static void CheckCmd(MainForm form)
         {
             string _data = IRCconnect._data.Remove(0,1);
-            string data = _data.Substring(_data.IndexOf(IRCconnect.MainIRC.Channel + " :") + (IRCconnect.MainIRC.Channel + " :").Length);
+            string data = _data.Substring(_data.IndexOf(IRCconnect.MainIRC.Channel[form.tabControl1.SelectedIndex] + " :") + (IRCconnect.MainIRC.Channel[form.tabControl1.SelectedIndex] + " :").Length);
             if (Properties.Settings.Default.YoutubeLinkInfo)
                 YoutubeFunc.mainControl(data);
             if (data.StartsWith("!"))

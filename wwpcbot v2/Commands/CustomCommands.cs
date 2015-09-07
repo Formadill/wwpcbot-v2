@@ -37,21 +37,48 @@ namespace wwpcbot_v2.Commands
         public static void cmdReply(string commandInput)
         {
             string command;
+            List<string> args = new List<string>();
             string response = null;
             string cmdfuncs = null;
             allow = true;
             command = commandInput;
             if (commandInput.Contains(" "))
+            {
+               
                 command = commandInput.Substring(0, commandInput.IndexOf(" "));
+                try
+                {
+                    string[] tmp = commandInput.Split(' ')[1].Split(' ');
+                    foreach (string arg in tmp)
+                    {
+                        args.Add(arg);
+                    }
+                }
+                catch
+                {
+                    args.Add(commandInput.Split(' ')[1]);
+                }
+            }
             using (var fs = new FileStream(cmdFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             using (StreamReader sr = new StreamReader(fs, Encoding.Default))
             {
                 bool found = false;
                 string line;
+                
                 while (!string.IsNullOrEmpty((line = sr.ReadLine())) && found == false)
                 {
                     string[] tmp = line.Split(new[] { "=" }, 2, StringSplitOptions.None);
-                    if(tmp[0].StartsWith(command))
+                    string stuff;
+                    try
+                    {
+                        stuff = tmp[0].Split(' ')[0];
+                        
+                    }
+                    catch
+                    {
+                        stuff = tmp[0];
+                    }
+                    if(stuff == command)
                     {
                         response = tmp[1];
                         cmdfuncs = tmp[0];
@@ -62,7 +89,7 @@ namespace wwpcbot_v2.Commands
                 {
                     if (cmdfuncs.Contains('-'))
                         cmdFuncs(cmdfuncs);
-                    response = replaceCmdCalls(response);
+                    response = replaceCmdCalls(response, args);
                     if (allow)
                         IRCconnect.sendPrivMsg(response);
                 }
@@ -80,9 +107,16 @@ namespace wwpcbot_v2.Commands
             IRCconnect.sendPrivMsg("Command added succesfully");
         }
 
-        private static string replaceCmdCalls(string input)
+        private static string replaceCmdCalls(string input, List<string> args)
         {
             string response = null;
+            
+            if (input.Contains("$readlinefromfile("))
+                input = readfromfile(input);
+            if (input.Contains("$arg["))
+                input = cmdargs(input, args);
+            if (input.Contains("$addlinetofile("))
+                input = addtofile(input);
             if (input.Contains("$random("))
                 input = random(input);
             if (input.Contains("$user"))
@@ -124,12 +158,81 @@ namespace wwpcbot_v2.Commands
         {
             string output = null;
             Random random = new Random();
-            string _options = input.Substring(input.IndexOf("$random(") + 8);
-            _options = _options.Substring(0, _options.IndexOf(")"));
+            string _options = readcmdargs(input, "$random(");
             string[] options = _options.Split(',');
             int index = random.Next(options.Length);
             output = options[index];
             return output;
+        }
+
+        private static string cmdargs(string input, List<string> args)
+        {
+            string output = null;
+            int index = 0;
+            foreach (string arg in args)
+            {
+                try
+                {
+                    output = input.Replace("$arg[" + index.ToString() + "]", args[index]);
+                    index++;
+                }
+                catch { output = ""; }
+            }
+            return output;
+        }
+
+        private static string addtofile(string input)
+        {
+            string[] pars = (readcmdargs(input, "$addlinetofile(")).Split(',');
+            string path = "Commands/" + pars[0];
+            string text = pars[1];
+            if (!File.Exists(path))
+                File.Create(path);
+            File.AppendAllText(path, text + Environment.NewLine);
+            return "Added succesfully!";
+        }
+
+        private static string readfromfile(string input)
+        {
+            Random random = new Random();
+            string[] pars = (readcmdargs(input, "$readlinefromfile(")).Split(',');
+            string path = "Commands/" + pars[0];
+            string _line = pars[1];
+            int line;
+            if (_line == "random")
+            {
+                line = random.Next(File.ReadLines(path).Count());
+                Console.WriteLine(File.ReadLines(path).Count());
+            }
+            else
+                line = Convert.ToInt32(_line);
+            string text = File.ReadLines(path).Skip(line).Take(1).First();
+            return text;
+        }
+
+        private static string readcmdargs(string input, string command)
+        {
+            string args = input.Substring(input.IndexOf(command) + command.Length);
+            int count = args.Count(f => f == ')');
+            args = args.Substring(0, GetNthIndex(args, ')', count));
+            return args;
+        }
+
+        public static int GetNthIndex(string s, char t, int n)
+        {
+            int count = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == t)
+                {
+                    count++;
+                    if (count == n)
+                    {
+                        return i;
+                    }
+                }
+            }
+            return -1;
         }
     }
 }

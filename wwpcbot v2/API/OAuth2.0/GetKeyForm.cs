@@ -17,7 +17,9 @@ namespace wwpcbot_v2.API.OAuth2
         
         public GetKeyForm()
         {
-            InitializeComponent();     
+            InitializeComponent();
+            Gecko.CookieManager.RemoveAll();
+            webBrowser1.Navigate("https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&amp;client_id=4gc4im1o2rtf0l45ejiyf68xej77qwe&amp;redirect_uri=http://twitchapps.com/tmi/&amp;scope=chat_login");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -38,7 +40,7 @@ namespace wwpcbot_v2.API.OAuth2
 
         private void GetKeyForm_Load(object sender, EventArgs e)
         {
-            webBrowser1.Navigate("http://www.twitch.tv/logout");
+            
         }
 
         private void webBrowser1_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)

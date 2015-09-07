@@ -78,8 +78,11 @@ namespace wwpcbot_v2.IRC
                         form.AddToListBox(data);
                     }
                     catch { }
-                    if(data.Split(' ')[1] == "001" && MainIRC.IRCip == "irc.twitch.tv")
+                    if (data.Split(' ')[1] == "001" && MainIRC.IRCip == "irc.twitch.tv")
+                    {
                         sendData("CAP REQ :twitch.tv/commands" + "\r\n");
+                        //sendData("CAP REQ :twitch.tv/tags" + "\r\n");
+                    }
                     if (data.StartsWith("PING "))
                         sendData(data.Replace("PING", "PONG") + "\r\n");                   
                 }
@@ -92,7 +95,6 @@ namespace wwpcbot_v2.IRC
 
         public static void sendData(string data)
         {
-            Console.WriteLine(mainClient.Connected);
             output.WriteAsync(data);
             output.FlushAsync();
             try

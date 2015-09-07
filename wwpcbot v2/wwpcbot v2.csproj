@@ -163,16 +163,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Commands\Commandss.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Commands\Commands.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Commands\Commands - Copy.txt">
+    <None Include="Commands\Quotes.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Geckofx-Core.dll" />
     <Content Include="Geckofx-Winforms.dll" />
     <Content Include="xulrunner\AccessibleMarshal.dll" />

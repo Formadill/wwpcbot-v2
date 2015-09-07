@@ -14,6 +14,7 @@
 !wwpc=WWPC stands for Weird Weaboo Porn Chat
 !twitch=Twitch dont give a shit
 !how2getpartner=LoL+Hearthstone+CS:GO
+!djoctavio=Slimy little hipster!
 !shutdown=LISTEN TO ME OR DIE 
 !help=Im not insane, plz help 
 !moderatorbot=I cri everytiem
@@ -27,7 +28,7 @@
 !dowestilllovefripic=YES
 !yesplz=$user plz
 !weed=naniso.re/420
-!sqid -g9do4e76p=$random(You're a kid,You're a squid)
+!sqid=$random(You're a kid,You're a squid)
 !biinny=http://biinny.com/
 !roll=$random(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)
 !icant=on a scale of one to even, i cant
@@ -69,7 +70,7 @@
 !hipster= SLIMY LITTLE HIPSTER DansGame
 !numbers=$array($arg1)
 !ded=Chat is ded
-!djoctavio -g9do4e76p=$random(SLIMY LITTLE HIPSTER! DansGame,PEEP THIS! DansGame,YOU CAN'T HANDLE MY SPICY WASABI BEATS! DansGame,BLARRGH! DansGame,I'LL REMIX YOUR FACE! DansGame,I'MA DUBSTOMP YOU INTO OBLIVION! DansGame,I WILL TAKE BACK WHAT'S MINE! DansGame,YOU ANNOYING INKLING - WHO DO YOU THINK YOU ARE? DansGame)
+!djoctavio=$random(SLIMY LITTLE HIPSTER! DansGame,PEEP THIS! DansGame,YOU CAN'T HANDLE MY SPICY WASABI BEATS! DansGame,BLARRGH! DansGame,I'LL REMIX YOUR FACE! DansGame,I'MA DUBSTOMP YOU INTO OBLIVION! DansGame,I WILL TAKE BACK WHAT'S MINE! DansGame,YOU ANNOYING INKLING - WHO DO YOU THINK YOU ARE? DansGame)
 !smoocs=all the smoocs for $arg1
 !finalbossmusic= FUCK TO THE HELL YES kreyGasm
 !makeamii=DO IT!
@@ -79,7 +80,7 @@
 !orange?=I dunno, but a lot of people like it.
 !ha=HAHA MVGame
 !rip= THE RUN IS DEAD, GIT OVA IT NERD AthenaPMS b
-!modoftheday=$random(Pastecho,Scorchus1,Formadill,Fripic,Artairrose,Aremath)
+!modoftheday=$random(Pastecho,Scorchus1,Formadill,Xerriasorsw,Fripic,Artairrose,Aremath)
 !artairrose=Head senpai, and does graphic design stuff. All around cool dude with a calm head and a raging boner.
 !formadill=Made the bot! Kreygasm
 !pastecho=Lord of Green, King of Aloof, funny dude who isn't unattractive. Sleepy.
@@ -113,5 +114,3 @@
 !copypasta=Plz no copy pasterino
 !testmodallow -m =The secret mods only command.
 !panic=$user needs to go hide some things in their room! PANIC TIME panicBasket
-!spanish=The game is in spanish because the dialogues are faster that way.
-!gametest -gyo1yyr1q=This command only works when the game is mirror's edge

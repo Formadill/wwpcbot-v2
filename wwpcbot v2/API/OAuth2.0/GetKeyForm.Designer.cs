@@ -45,7 +45,7 @@ namespace wwpcbot_v2.API.OAuth2
             | System.Windows.Forms.AnchorStyles.Right)));
             this.webBrowser1.Location = new System.Drawing.Point(0, 0);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(993, 1283);
+            this.webBrowser1.Size = new System.Drawing.Size(993, 1032);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.UseHttpActivityObserver = false;
             this.webBrowser1.Visible = false;
@@ -55,7 +55,7 @@ namespace wwpcbot_v2.API.OAuth2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 1279);
+            this.ClientSize = new System.Drawing.Size(993, 1028);
             this.Controls.Add(this.webBrowser1);
             this.Name = "GetKeyForm";
             this.Text = "GetKeyForm";

@@ -58,15 +58,20 @@ namespace wwpcbot_v2.IRC
             formOutputs.IRCip = textBoxIP.Text;
             formOutputs.IRCport = Convert.ToInt32(textBoxPort.Text);
             formOutputs.Channel = null;
-            formOutputs.OAuthKey = OAuth2.GetKey();
+            formOutputs.OAuthKey = textBoxPass.Text;
             formOutputs.ServerName = textBoxName.Text;
             IRCconnect.MainIRC = formOutputs;
             MainForm.form.joinChannelToolStripMenuItem.Enabled = true;
             
 
-            IRCconnect.connectMain();                        
+            Task.Factory.StartNew(IRCconnect.connectMain).Wait();                        
             IRCconnect.listener();
             this.Close();
+        }
+
+        private void buttonTwitch_Click(object sender, EventArgs e)
+        {
+            textBoxPass.Text = OAuth2.GetKey();
         }
     }
 }
